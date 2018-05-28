@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="analysis-of-holter-ecg-signals-app" target="1.5" />
+      <module name="analysis-of-holter-ecg-signals-app" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
