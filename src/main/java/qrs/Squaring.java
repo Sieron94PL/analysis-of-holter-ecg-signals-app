@@ -1,8 +1,8 @@
-package qrs_detection;
+package qrs;
 
-public class Power {
+public class Squaring {
 
-    public static float[] power(float[] input) {
+    public static float[] squaring(float[] input) {
         float[] output = new float[input.length];
 
         for (int i = 0; i < input.length; i++) {
