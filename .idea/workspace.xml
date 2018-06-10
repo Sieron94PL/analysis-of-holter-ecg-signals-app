@@ -2,36 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Sample.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/filter_discrete_realization/BandPassFilter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/LowPassFilter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/model/Sample.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/qrs/Derivative.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/qrs/Detection.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/qrs/Normalization.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/filter/BandPassFilter.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/filter/HighPassFilter.java" afterPath="$PROJECT_DIR$/src/main/java/filter_discrete_realization/HighPassFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/filter/LowPassFilter.java" afterPath="$PROJECT_DIR$/src/main/java/filter_discrete_realization/LowPassFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/filter_by_pan_tompkins/LowPassFilter.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/qrs_detection/Differentiation.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/qrs_detection/Filtration.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/qrs_detection/Integration.java" afterPath="$PROJECT_DIR$/src/main/java/qrs/Integration.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/qrs_detection/Power.java" afterPath="$PROJECT_DIR$/src/main/java/qrs/Squaring.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/qrs_detection/QRSDetection.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java" afterPath="$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java" afterPath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java" afterPath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/LowPassFilter.java" afterPath="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/LowPassFilter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/qrs/Detection.java" afterPath="$PROJECT_DIR$/src/main/java/qrs/Detection.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sample/Main.java" afterPath="$PROJECT_DIR$/src/main/java/sample/Main.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filter/BandPassFilter.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filter/HighPassFilter.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filter/LowPassFilter.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/filter_by_pan_tompkins/LowPassFilter.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/qrs_detection/Differentiation.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/qrs_detection/Filtration.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/qrs_detection/Integration.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/qrs_detection/Power.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/qrs_detection/QRSDetection.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/Main.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter_iirj/ButterworthFilter.class" afterPath="$PROJECT_DIR$/target/classes/filter_iirj/ButterworthFilter.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter_pan_tompkins/BandPassFilter.class" afterPath="$PROJECT_DIR$/target/classes/filter_pan_tompkins/BandPassFilter.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter_pan_tompkins/HighPassFilter.class" afterPath="$PROJECT_DIR$/target/classes/filter_pan_tompkins/HighPassFilter.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter_pan_tompkins/LowPassFilter.class" afterPath="$PROJECT_DIR$/target/classes/filter_pan_tompkins/LowPassFilter.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/qrs/Detection.class" afterPath="$PROJECT_DIR$/target/classes/qrs/Detection.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sample/Main.class" afterPath="$PROJECT_DIR$/target/classes/sample/Main.class" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,6 +27,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/analysis_of_holter_ecg_signals_app$Main.coverage" NAME="Main Coverage Results" MODIFIED="1528462404044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>sample.*</FILTER>
+    </SUITE>
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -93,38 +82,69 @@
       <file leaf-file-name="Detection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Detection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1122">
+              <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HighPassFilter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LowPassFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/LowPassFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Normalization.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Normalization.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Sample.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Sample.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Sample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-              <folding>
-                <element signature="e#192#193#0" expanded="true" />
-                <element signature="e#217#218#0" expanded="true" />
-                <element signature="e#248#249#0" expanded="true" />
-                <element signature="e#276#277#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LowPassFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/filter_discrete_realization/LowPassFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="9" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="69" column="63" lean-forward="false" selection-start-line="69" selection-start-column="63" selection-end-line="69" selection-end-column="63" />
-              <folding>
-                <element signature="e#1389#1405#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="331">
+              <caret line="55" column="54" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,8 +152,31 @@
       <file leaf-file-name="ButterworthFilter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BandPassFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+              <folding>
+                <element signature="e#414#415#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HighPassFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/filter_discrete_realization/HighPassFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -192,12 +235,15 @@
         <option value="$PROJECT_DIR$/src/main/java/filter_discrete_realization/LowPassFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/filter_discrete_realization/HighPassFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Sample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/qrs/Normalization.java" />
         <option value="$PROJECT_DIR$/src/main/java/Sample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/qrs/Detection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/qrs/CancellationDC.java" />
+        <option value="$PROJECT_DIR$/src/main/java/qrs/Normalization.java" />
+        <option value="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/LowPassFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java" />
       </list>
     </option>
   </component>
@@ -216,7 +262,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="676" />
+    <option name="x" value="2245" />
+    <option name="y" value="15" />
     <option name="width" value="697" />
     <option name="height" value="745" />
   </component>
@@ -239,10 +286,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -342,6 +387,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -550,38 +597,42 @@
       <workItem from="1528187482938" duration="4896000" />
       <workItem from="1528195554004" duration="2875000" />
       <workItem from="1528298893393" duration="8650000" />
-      <workItem from="1528346569517" duration="9109000" />
+      <workItem from="1528346569517" duration="11530000" />
+      <workItem from="1528387705975" duration="314000" />
+      <workItem from="1528455661402" duration="4717000" />
+      <workItem from="1528547295802" duration="5113000" />
+      <workItem from="1528617212988" duration="1296000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84428000" />
+    <option name="totallyTimeSpent" value="98289000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="1358" y="-326" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32713178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32706374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29147288" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19435737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25036603" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2859375" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3984496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39811912" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -641,7 +692,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/qrs/Detection.java</url>
+          <line>66</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -650,13 +709,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/ECGSignal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -703,13 +755,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller.java">
@@ -727,13 +779,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DatReader.java" />
@@ -777,13 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/uk/me/berndporr/iirj/1.0/iirj-1.0-sources.jar!/uk/me/berndporr/iirj/Cascade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/classes/sample/Controller.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -823,14 +868,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/qrs_detection/Exponentiation.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/qrs_detection/Filtration.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/LowPassFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/ECGSignal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
@@ -838,36 +875,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter_discrete_realization/LowPassFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="9" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Sample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-          <folding>
-            <element signature="e#206#207#0" expanded="false" />
-            <element signature="e#231#232#0" expanded="false" />
-            <element signature="e#262#263#0" expanded="false" />
-            <element signature="e#290#291#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Squaring.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -893,14 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter_discrete_realization/HighPassFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Derivative.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -917,55 +917,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Sample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="68">
+          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
           <folding>
-            <element signature="e#807#808#0" expanded="false" />
-            <element signature="e#880#881#0" expanded="false" />
+            <element signature="e#192#193#0" expanded="false" />
+            <element signature="e#217#218#0" expanded="false" />
+            <element signature="e#248#249#0" expanded="false" />
+            <element signature="e#276#277#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/uk/me/berndporr/iirj/1.0/iirj-1.0-sources.jar!/uk/me/berndporr/iirj/Cascade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filter_discrete_realization/HighPassFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Normalization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Sample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filter_discrete_realization/LowPassFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="9" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Detection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1122">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Sample.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/filter_iirj/ButterworthFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-          <folding>
-            <element signature="e#192#193#0" expanded="true" />
-            <element signature="e#217#218#0" expanded="true" />
-            <element signature="e#248#249#0" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="69" column="63" lean-forward="false" selection-start-line="69" selection-start-column="63" selection-end-line="69" selection-end-column="63" />
+        <state relative-caret-position="331">
+          <caret line="55" column="54" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/LowPassFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
           <folding>
-            <element signature="e#1389#1405#0" expanded="true" />
+            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Detection {
 
-    private final static float THRESHOLD_VALUE = 0.6f;
+    private final static float THRESHOLD_VALUE = 0.015f;
 
     public static float max(float[] input) {
         float max = 0.0f;

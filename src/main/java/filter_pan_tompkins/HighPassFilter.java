@@ -4,22 +4,21 @@ public class HighPassFilter {
 
     /**
      * Transfer function:
-     * H(z) = (1 - z^-6)^2 / (1 - z^-1)^2
+     * H(z) = (-1 + 32z^-16 + z^-32) / (1 + z^-1)
      * Difference equation:
-     * y(n) = 2*y(n-1) - y(n - 2) + x(n) - 2*x(n-6) + x(n-12)
+     * y(n) = 32*x(n-16) - [y[n-1] + x[n] - x[n-32]
      *
      * @param input
      * @return
      */
     public static float[] filter(float[] input) {
-
         float[] output = new float[input.length];
 
-        for (int i = 32; i < input.length; i++) {
-            if (i < 32) {
+        for (int i = 0; i < input.length; i++) {
+            if (i < 32)
                 output[i] = input[i];
-            }
-            output[i] = 32 * input[i - 16] - (output[i - 1] + input[i] - input[i - 32]);
+            else
+                output[i] = 32 * input[i - 16] - (output[i - 1] + input[i] - input[i - 32]);
         }
 
         return output;

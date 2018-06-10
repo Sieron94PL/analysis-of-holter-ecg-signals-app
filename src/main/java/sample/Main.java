@@ -1,7 +1,8 @@
 package sample;
 
-import filter_discrete_realization.BandPassFilter;
-import filter_iirj.ButterworthFilter;
+import filter_pan_tompkins.BandPassFilter;
+import filter_pan_tompkins.HighPassFilter;
+import filter_pan_tompkins.LowPassFilter;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,11 +12,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
-import model.Sample;
-import qrs.Derivative;
-import qrs.Detection;
-import qrs.Integration;
-import qrs.Squaring;
+import qrs.*;
 import utils.ReadCardioPathNumberOfChannels;
 import utils.ReadCardioPathSimple;
 
@@ -33,7 +30,7 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
 
-        final NumberAxis xAxis = new NumberAxis(0, 1024, 50);
+        final NumberAxis xAxis = new NumberAxis(0, 1000, 50);
         xAxis.setLabel("Sample no");
 
         final NumberAxis yAxis = new NumberAxis();
@@ -50,26 +47,33 @@ public class Main extends Application {
 
         int channels = ReadCardioPathNumberOfChannels.load(ECG_DATA_DIRECTORY);
         float[] input = ReadCardioPathSimple.load(ECG_DATA_DIRECTORY, channels).getAllData()[0];
-        float[] _input = Arrays.copyOfRange(input, 24000, 25024);
+        float[] _input = Arrays.copyOfRange(input, 24000, 25000);
 
         //float[] output_ = ButterworthFilter.filterCascade(_input);
-        float[] output_ = Detection.normalize(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filterBandPass(_input)))));
-        List<Integer> output = Detection.detect(output_);
+//        float[] output_ = Detection.normalize(Integration.integration(Squaring.squaring(Derivative.derivative(HighPassFilter.filter(LowPassFilter.filter(_input))))));
+//        List<Integer> output = Detection.detect(output_);
 
+        float[] output = LowPassFilter.filter(_input);
 
+//
+//        float[] output = Detection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(HighPassFilter.filter(LowPassFilter.filter(_input))))));
+
+        for (int i = 0; i < output.length; i++) {
+            series.getData().add(new XYChart.Data<>(i, output[i]));
+        }
 
 
         for (int i = 0; i < _input.length; i++) {
-            series.getData().add(new XYChart.Data<>(i, _input[i]));
+            series1.getData().add(new XYChart.Data<>(i, _input[i]));
         }
-
-        for (int i = 0; i < _input.length; i++) {
-            if (output.contains(i)) {
-                series1.getData().add(new XYChart.Data<>(i, 255));
-            } else {
-                series1.getData().add(new XYChart.Data<>(i, 100));
-            }
-        }
+//
+//        for (int i = 0; i < _input.length; i++) {
+//            if (output.contains(i)) {
+//                series1.getData().add(new XYChart.Data<>(i, 255));
+//            } else {
+//                series1.getData().add(new XYChart.Data<>(i, 100));
+//            }
+//        }
 
         Scene scene = new Scene(lineChart, 800, 600);
 

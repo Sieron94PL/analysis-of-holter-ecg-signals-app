@@ -15,7 +15,7 @@ public class LowPassFilter {
 
         float[] output = new float[input.length];
 
-        for (int i = 12; i < input.length; i++) {
+        for (int i = 0; i < input.length; i++) {
             if (i < 12) {
                 output[i] = input[i];
             } else {
