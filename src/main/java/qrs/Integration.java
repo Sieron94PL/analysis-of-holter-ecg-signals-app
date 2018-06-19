@@ -8,7 +8,7 @@ public class Integration {
             for (int j = i - 24; j < i; j++) {
                 output[i - 24] += input[j];
             }
-            output[i - 24] = 0.04f * output[i - 24];
+            output[i - 24] = (1.0f / 25.0f) * output[i - 24];
         }
         return output;
     }

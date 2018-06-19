@@ -27,10 +27,12 @@ public class LowPassFilter {
     public static float[] filter(float[] input, float samplingFrequency, float cuttoffFrequency) {
         float[] output = new float[input.length - 1];
         float alpha = alpha(samplingFrequency, cuttoffFrequency);
+
         output[0] = alpha * input[0];
         for (int i = 1; i < input.length - 1; i++) {
             output[i] = output[i - 1] + alpha * (input[i] - output[i - 1]);
         }
+
         return output;
     }
 

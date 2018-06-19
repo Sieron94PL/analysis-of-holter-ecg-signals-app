@@ -2,7 +2,6 @@ package qrs;
 
 public class Normalization {
 
-
     public static float[] normalize(float[] input) {
         float[] output = new float[input.length];
         float max = max(input);
@@ -10,13 +9,11 @@ public class Normalization {
             output[i] = input[i] / max;
         }
         return output;
-
     }
 
     public static float[] cancelDC(float[] input) {
         float[] output = new float[input.length];
         float mean = mean(input);
-
         for (int i = 0; i < input.length; i++) {
             output[i] = input[i] - mean;
         }
@@ -31,7 +28,7 @@ public class Normalization {
         return sum / input.length;
     }
 
-    private static float max(float[] input) {
+    public static float max(float[] input) {
         float max = input[0];
         for (int i = 1; i < input.length; i++) {
             if (max < Math.abs(input[i])) {

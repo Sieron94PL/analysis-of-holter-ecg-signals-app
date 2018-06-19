@@ -2,15 +2,15 @@ package model;
 
 public class Sample {
 
-    private int id;
+    private Long id;
     private float value;
 
-    public Sample(int id, float value) {
+    public Sample(Long id, float value) {
         this.id = id;
         this.value = value;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

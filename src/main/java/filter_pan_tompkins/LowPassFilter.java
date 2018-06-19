@@ -12,17 +12,13 @@ public class LowPassFilter {
      * @return
      */
     public static float[] filter(float[] input) {
-
         float[] output = new float[input.length];
-
         for (int i = 0; i < input.length; i++) {
-            if (i < 12) {
+            if (i < 12)
                 output[i] = input[i];
-            } else {
+            else
                 output[i] = 2 * output[i - 1] - output[i - 2] + input[i] - 2 * input[i - 6] + input[i - 12];
-            }
         }
-
         return output;
     }
 }
