@@ -32,7 +32,6 @@ public class QrsDetection {
                 id = samples.get(i).getId();
             }
         }
-
         return new Sample(id, max);
     }
 

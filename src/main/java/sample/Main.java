@@ -16,6 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.Sample;
+import parameters.HeartRate;
+import parameters.HeartRateVariability;
 import qrs.*;
 import utils.ReadCardioPathNumberOfChannels;
 import utils.ReadCardioPathSimple;
@@ -34,7 +36,7 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
 
-        final NumberAxis xAxis = new NumberAxis(0, 2000, 50);
+        final NumberAxis xAxis = new NumberAxis(0, 100, 1);
         xAxis.setLabel("Sample no");
 
         final NumberAxis yAxis = new NumberAxis();
@@ -46,9 +48,9 @@ public class Main extends Application {
         XYChart.Series seriesInputSignal = new XYChart.Series();
         XYChart.Series seriesOutputSignal = new XYChart.Series();
         XYChart.Series seriesOutputSignal1 = new XYChart.Series();
-
         int channels = ReadCardioPathNumberOfChannels.load(ECG_DATA_DIRECTORY);
-        float[] input = Arrays.copyOfRange(ReadCardioPathSimple.load(ECG_DATA_DIRECTORY, channels).getAllData()[0], 21000, 23000);
+
+        float[] input = Arrays.copyOfRange(ReadCardioPathSimple.load(ECG_DATA_DIRECTORY, channels).getAllData()[0], 102000, 130000); //length = 9653888
 //        input = Normalization.normalize(Normalization.cancelDC(input));
 
 
@@ -62,31 +64,42 @@ public class Main extends Application {
                                                         Normalization.cancelDC(input)))))));
 
 
-        float[] output_ = Integration.integration(
-                Squaring.squaring(
-                        Derivative.derivative(
-                                ButterworthFilter.filter(
-                                        Normalization.normalize(
-                                                Normalization.cancelDC(input))))));
+//        float[] output_ = Integration.integration(
+//                Squaring.squaring(
+//                        Derivative.derivative(
+//                                ButterworthFilter.filter(
+//                                        Normalization.normalize(
+//                                                Normalization.cancelDC(input))))));
 
         for (int i = 0; i < input.length; i++) {
             seriesInputSignal.getData().add(new XYChart.Data<>(i, input[i]));
-            System.out.println(i + ": " + input[i]);
+            //System.out.println(i + ": " + input[i]);
         }
 
-        System.out.println(output.size());
+        //System.out.println(output.size());
 
-        for (int i = 0; i < output.size(); i++) {
-            seriesOutputSignal.getData().add(new XYChart.Data<>(output.get(i).getId(), input[output.get(i).getId().intValue()]));
-        }
+//        for (int i = 0; i < output.size(); i++) {
+//            seriesOutputSignal.getData().add(new XYChart.Data<>(output.get(i).getId(), input[output.get(i).getId().intValue()]));
+//        }
+//
+//        for(int i = 0; i < output_.length; i++){
+//            seriesOutputSignal1.getData().add(new XYChart.Data<>(i, output_[i]));
+//        }
 
-        for(int i = 0; i < output_.length; i++){
-            seriesOutputSignal1.getData().add(new XYChart.Data<>(i, output_[i]));
-        }
 
+        float[] output_ = HeartRateVariability.getIntervalsRR(output);
 
+        System.out.println(HeartRate.getHeartRate(output_));
 
-        System.out.println(seriesOutputSignal.getData());
+//        seriesOutputSignal1.getData().add(new XYChart.Data<>(0, output_[0]));
+//
+//        for(int i = 1; i < output_.length; i++){
+//            seriesOutputSignal1.getData().add(new XYChart.Data<>(i, output_[i - 1]));
+//            seriesOutputSignal1.getData().add(new XYChart.Data<>(i, output_[i]));
+//
+//        }
+
+        //System.out.println(seriesOutputSignal.getData());
 
         Scene scene = new Scene(lineChart, 800, 600);
 
