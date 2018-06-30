@@ -1,20 +1,23 @@
 package model;
 
+import java.util.List;
+
 public class Sample {
 
-    private Long id;
+    private int id;
     private float value;
 
-    public Sample(Long id, float value) {
+    public Sample(int id, float value) {
         this.id = id;
         this.value = value;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     public float getValue() {
         return value;
     }
+
 }

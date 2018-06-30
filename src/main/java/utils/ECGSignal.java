@@ -3,12 +3,13 @@ package utils;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.Math;
 
 public class ECGSignal {
 
     private float[][] data;
     private int channelsNumber;
-
+    private float samplingPeriod;
     private int samplingFrequency;
 
     String fullPath;
@@ -115,6 +116,11 @@ public class ECGSignal {
 
     public int getSamplingFrequency() {
         return samplingFrequency;
+    }
+
+    public float getSamplingPeriod() {
+        this.samplingPeriod = 1.0f / samplingFrequency;
+        return samplingPeriod;
     }
 
 
