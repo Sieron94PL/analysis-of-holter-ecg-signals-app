@@ -22,5 +22,11 @@ public class HeartRateVariability {
         return intervalsRR;
     }
 
+    public static void displayIntervalsRR(float[] intervalsRR) {
+        for (int i = 0; i < intervalsRR.length; i++) {
+            System.out.println("intervalRR " + (i + 1) + " = " + intervalsRR[i] + "ms");
+        }
+    }
+
 
 }

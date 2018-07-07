@@ -3,7 +3,7 @@ package utils;
 public class Math {
 
     public final static float THRESHOLD_VALUE = 0.2f;
-    public final static float SAMPLING_FREQUENCY = 128.0f;
+    public final static float SAMPLING_FREQUENCY = 360.0f;
     public final static float SAMPLING_PERIOD = 1.0f / SAMPLING_FREQUENCY;
     public final static float ONE_MINUTE = toMillisecond(60.0f);
 
@@ -23,6 +23,26 @@ public class Math {
             }
         }
         return max;
+    }
+
+    public static float min(float[] input) {
+        float min = input[0];
+        for (int i = 1; i < input.length; i++) {
+            if (min > java.lang.Math.abs(input[i])) {
+                min = java.lang.Math.abs(input[i]);
+            }
+        }
+        return min;
+    }
+
+    public static int timeToSampleNumber(float time, float samplingFrequency) {
+        float samplingPeriod = 1.0f / samplingFrequency;
+        return java.lang.Math.round(time / samplingPeriod);
+    }
+
+    public static float sampleToTime(int sampleNumber, float samplingFrequency) {
+        float samplingPeriod = 1.0f / samplingFrequency;
+        return sampleNumber * samplingPeriod;
     }
 
     public static float toMillisecond(float value) {

@@ -4,12 +4,12 @@ import uk.me.berndporr.iirj.Butterworth;
 
 public class ButterworthFilter {
 
-    public static float[] filter(float[] input) {
+    public static float[] filter(float[] input, int samplingFrequency) {
         Butterworth butterworth = new Butterworth();
         float[] output = new float[input.length];
 
         /*Band pass filter 5-11Hz.*/
-        butterworth.bandPass(2, 128, 8, 6);
+        butterworth.bandPass(2, samplingFrequency, 8, 6);
         for (int i = 0; i < input.length; i++) {
             output[i] = (float) butterworth.filter(input[i]);
         }
