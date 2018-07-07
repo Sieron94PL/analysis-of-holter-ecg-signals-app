@@ -28,18 +28,7 @@ public class QrsDetection {
         return true;
     }
 
-    private Sample searchPeak(int sampleId) {
-        if (ecgSignal[sampleId - 1] < ecgSignal[sampleId + 1] && ecgSignal[sampleId] < ecgSignal[sampleId + 1])
-            return new Sample(sampleId + 1, ecgSignal[sampleId + 1]);
-
-        else if (ecgSignal[sampleId - 1] > ecgSignal[sampleId] && ecgSignal[sampleId - 1] > ecgSignal[sampleId + 1])
-            return new Sample(sampleId + 1, ecgSignal[sampleId + 1]);
-
-        else return new Sample(sampleId, ecgSignal[sampleId]);
-
-    }
-
-    private static Sample getPeak(List<Sample> samples) {
+    private Sample getPeak(List<Sample> samples) {
         float max = samples.get(0).getValue();
         int id = samples.get(0).getId();
 
@@ -50,13 +39,20 @@ public class QrsDetection {
             }
         }
 
+        max = ecgSignal[id - 5];
+        for (int i = id - 5; i < id + 5; i++) {
+            if (ecgSignal[i] > max) {
+                max = ecgSignal[i];
+                id = i;
+            }
+        }
+
         return new Sample(id, max);
     }
 
     public List<Sample> detect(float[] input) {
         List<Sample> temp = new ArrayList<>();
         List<Sample> peaks = new ArrayList<>();
-        int peakId;
 
         input = Normalization.normalize(input);
 
@@ -69,8 +65,7 @@ public class QrsDetection {
                         temp.add(new Sample(i, input[i] / Math.max(input)));
                         i++;
                     }
-                    peakId = getPeak(temp).getId();
-                    peaks.add(searchPeak(peakId));
+                    peaks.add(getPeak(temp));
                     temp.clear();
                 }
             }

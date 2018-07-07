@@ -12,6 +12,7 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import model.Sample;
 import parameters.HeartRateVariability;
+import parameters.PrematureVentricularContractions;
 import qrs.*;
 import utils.*;
 import utils.Math;
@@ -34,18 +35,20 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
 
         int samplingFrequency = 360;
-        String fileDAT = "aami3a.dat";
-        String fileCSV = "100.csv";
+        //String fileDAT = "crecg.dat";
+        String fileCSV = "105.csv";
 
         /*ECG Signal from .csv file.*/
-        //float[] inputSignal = ReadCardioPathSimple.loadCSV(CSV_DATA_DIRECTORY + fileCSV, 2);
+        float[] inputSignal = ReadCardioPathSimple.loadCSV(CSV_DATA_DIRECTORY + fileCSV, 1);
 
         /*ECG Signal from .dat file.*/
-        int channels = ReadCardioPathNumberOfChannels.load(ECG_DATA_DIRECTORY);
-        ECGSignal signal = ReadCardioPathSimple.load(ECG_DATA_DIRECTORY, channels, samplingFrequency, fileDAT);
-        float[] inputSignal = Arrays.copyOfRange(signal.getChannel(0), 5000, 6000); //length = 9653888
+//        int channels = ReadCardioPathNumberOfChannels.load(ECG_DATA_DIRECTORY);
+//        ECGSignal signal = ReadCardioPathSimple.load(ECG_DATA_DIRECTORY, channels, samplingFrequency, fileDAT);
+//        float[] inputSignal = Arrays.copyOfRange(signal.getChannel(0), 20000, 40000); //length = 9653888
 
         inputSignal = Normalization.normalize(Normalization.cancelDC(inputSignal));
+
+        float[] energyPVC = PrematureVentricularContractions.energy(inputSignal);
 
         float[] filteredSignal = ButterworthFilter.filter(inputSignal, samplingFrequency);
         float[] intervalsRR;
@@ -62,11 +65,15 @@ public class Main extends Application {
         XYChart.Series filteredSignalSeries = new XYChart.Series();
         XYChart.Series peaksSeries = new XYChart.Series();
         XYChart.Series intervalsRRSeries = new XYChart.Series();
+        XYChart.Series energyPVCSeries = new XYChart.Series();
 
-
-        for (int i = 0; i < inputSignal.length; i++) {
-            inputSignalSeries.getData().add(new XYChart.Data<>(i, inputSignal[i]));
-        }
+//        for (int i = 0; i < energyPVC.length; i++) {
+//            energyPVCSeries.getData().add(new XYChart.Data<>(i * Math.SAMPLING_PERIOD, energyPVC[i]));
+//        }
+//
+//        for (int i = 0; i < inputSignal.length; i++) {
+//            inputSignalSeries.getData().add(new XYChart.Data<>(i * Math.SAMPLING_PERIOD, inputSignal[i]));
+//        }
 
 //        for (int i = 0; i < filteredSignal.length; i++) {
 //            filteredSignalSeries.getData().add(new XYChart.Data<>(i, filteredSignal[i]));
@@ -92,8 +99,8 @@ public class Main extends Application {
         }
 
         int lowerBound = 0;
-        int upperBound = inputSignal.length;
-        float tickUnit = 1.0f;
+        int upperBound = 100;
+        float tickUnit = 5.0f;
 
         final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, tickUnit);
         xAxis.setLabel("Sample no");
@@ -106,10 +113,11 @@ public class Main extends Application {
 
         Scene scene = new Scene(lineChart, 800, 600);
 
-        lineChart.getData().add(inputSignalSeries);
+//        lineChart.getData().add(inputSignalSeries);
 //        lineChart.getData().add(filteredSignalSeries);
-        lineChart.getData().add(peaksSeries);
-//        lineChart.getData().add(intervalsRRSeries);
+//        lineChart.getData().add(peaksSeries);
+        lineChart.getData().add(intervalsRRSeries);
+//        lineChart.getData().add(energyPVCSeries);
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Analysis of Holter ECG signals");
