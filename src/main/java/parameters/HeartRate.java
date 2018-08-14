@@ -1,16 +1,21 @@
 package parameters;
 
+import model.Sample;
+
+import java.util.List;
+
 public class HeartRate {
 
-    private static float averageIntervalRR(float[] intervalsRR) {
+    public static float averageIntervalRR(List<Sample> intervalsRR) {
         float sum = 0.0f;
-        for (int i = 0; i < intervalsRR.length; i++) {
-            sum += intervalsRR[i];
+        for (int i = 0; i < intervalsRR.size(); i++) {
+            sum += intervalsRR.get(i).getValue();
         }
-        return sum / intervalsRR.length;
+        return sum / intervalsRR.size();
     }
 
-    public static float getHeartRate(float[] intervalsRR) {
+    public static float getHeartRate(List<Sample> intervalsRR) {
         return Math.round(utils.Math.ONE_MINUTE / averageIntervalRR(intervalsRR));
     }
+
 }

@@ -21,8 +21,6 @@ public class HighPassFilter {
         }
         return output;
     }
-
-
     /**
      * http://mule.cslab.ece.ntua.gr/docs/c8.pdf
      * y(n) = y(n - 1) - 1/32 * x(n) + x(n - 16) - x(n - 17) + 1/32 * x(n - 32)
@@ -40,6 +38,4 @@ public class HighPassFilter {
         }
         return output;
     }
-
-
 }

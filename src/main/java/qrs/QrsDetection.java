@@ -1,6 +1,5 @@
 package qrs;
 
-
 import model.Sample;
 import utils.Math;
 
@@ -31,14 +30,12 @@ public class QrsDetection {
     private Sample getPeak(List<Sample> samples) {
         float max = samples.get(0).getValue();
         int id = samples.get(0).getId();
-
         for (int i = 1; i < samples.size(); i++) {
             if (samples.get(i).getValue() > max) {
                 max = samples.get(i).getValue();
                 id = samples.get(i).getId();
             }
         }
-
         max = ecgSignal[id - 5];
         for (int i = id - 5; i < id + 5; i++) {
             if (ecgSignal[i] > max) {
@@ -46,20 +43,15 @@ public class QrsDetection {
                 id = i;
             }
         }
-
         return new Sample(id, max);
     }
 
     public List<Sample> detect(float[] input) {
         List<Sample> temp = new ArrayList<>();
         List<Sample> peaks = new ArrayList<>();
-
         input = Normalization.normalize(input);
-
         for (int i = 5; i < input.length; i++) {
-
             if (input[i] / Math.max(input) > Math.THRESHOLD_VALUE) {
-
                 if (isQRS(Arrays.copyOfRange(input, i - 5, i + 5))) {
                     while (input[i] / Math.max(input) > Math.THRESHOLD_VALUE && i < input.length - 1) {
                         temp.add(new Sample(i, input[i] / Math.max(input)));
@@ -70,8 +62,6 @@ public class QrsDetection {
                 }
             }
         }
-
         return peaks;
     }
-
 }

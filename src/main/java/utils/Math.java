@@ -2,7 +2,7 @@ package utils;
 
 public class Math {
 
-    public final static float THRESHOLD_VALUE = 0.2f;
+    public final static float THRESHOLD_VALUE = 0.15f;
     public final static float SAMPLING_FREQUENCY = 360.0f;
     public final static float SAMPLING_PERIOD = 1.0f / SAMPLING_FREQUENCY;
     public final static float ONE_MINUTE = toMillisecond(60.0f);

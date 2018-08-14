@@ -42,19 +42,19 @@ public class ReadCardioPathSimple {
         return null;
     }
 
-    public static float[] loadCSV(String path, int signalNumber) {
+    public static float[] loadCSV(String path, int signalNumber, int start, int stop) {
         Reader reader = null;
         try {
             reader = Files.newBufferedReader(Paths.get(path));
             CSVReader csvReader = new CSVReader(reader);
             List<String[]> records = csvReader.readAll();
 
-            float[] input = new float[records.size() - 2];
+            float[] input = new float[stop - start];
 
             if (signalNumber <= records.get(0).length - 1 && signalNumber > 0) {
-                for (int i = 2; i < records.size(); i++) {
+                for (int i = start; i < stop; i++) {
                     String[] record = records.get(i);
-                    input[i - 2] = Float.parseFloat(record[signalNumber]);
+                    input[i - start] = Float.parseFloat(record[signalNumber]);
                 }
                 return input;
             } else {
