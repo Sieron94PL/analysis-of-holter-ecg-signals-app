@@ -1,5 +1,8 @@
 package utils;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Math {
 
     public final static float THRESHOLD_VALUE = 0.15f;
@@ -35,17 +38,36 @@ public class Math {
         return min;
     }
 
-    public static int timeToSampleNumber(float time, float samplingFrequency) {
-        float samplingPeriod = 1.0f / samplingFrequency;
-        return java.lang.Math.round(time / samplingPeriod);
+    public static float samplingPeriod(float samplingFrequency) {
+        return 1.0f / samplingFrequency;
     }
 
-    public static float sampleToTime(int sampleNumber, float samplingFrequency) {
-        float samplingPeriod = 1.0f / samplingFrequency;
-        return sampleNumber * samplingPeriod;
+    public static int secondsToSample(float second, float samplingFrequency) {
+        return (int) java.lang.Math.round(second * samplingFrequency);
+    }
+
+    public static float sampleToSecond(int sampleId, float samplingFrequency) {
+        return sampleId / samplingFrequency;
+    }
+
+    public static String secondsToLocalTime(int seconds) {
+        return LocalTime.MIN.plusSeconds(seconds).format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+    }
+
+    public static int localTimeToSeconds(String localTime) {
+        return LocalTime.parse(localTime).toSecondOfDay();
     }
 
     public static float toMillisecond(float value) {
         return 1000.0f * value;
     }
+
+    public static String getFileExtension(String path) {
+        int lastIndexOf = path.lastIndexOf(".");
+        if (lastIndexOf == -1) {
+            return ""; // empty extension
+        }
+        return path.substring(lastIndexOf);
+    }
+
 }

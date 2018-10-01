@@ -14,8 +14,8 @@ public class HeartRate {
         return sum / intervalsRR.size();
     }
 
-    public static float getHeartRate(List<Sample> intervalsRR) {
-        return Math.round(utils.Math.ONE_MINUTE / averageIntervalRR(intervalsRR));
+    public static float getHeartRate(float averageIntervalRR) {
+        return Math.round(utils.Math.ONE_MINUTE / averageIntervalRR);
     }
 
 }

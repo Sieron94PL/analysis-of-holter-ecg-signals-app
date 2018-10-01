@@ -10,13 +10,13 @@ import java.util.List;
 
 public class ReadCardioPathSimple {
 
-    public static ECGSignal load(String path, int channels, int samplingFrequency, String filename) {
+    public static ECGSignal load(String path, int channels, int samplingFrequency) {
 
         int channel = 0;
         int bajt;
         int i = 0;
         try {
-            FileInputStream readSource = new FileInputStream(path + File.separator + filename);
+            FileInputStream readSource = new FileInputStream(path);
 
             int size = readSource.available() / channels;
             ECGSignal signal = new ECGSignal(channels, size, samplingFrequency);
@@ -43,28 +43,34 @@ public class ReadCardioPathSimple {
     }
 
     public static float[] loadCSV(String path, int signalNumber, int start, int stop) {
-        Reader reader = null;
+        List<String[]> records = getRecords(path);
+        float[] input = new float[stop - start];
+
+        if (signalNumber <= records.get(0).length - 1 && signalNumber > 0) {
+            for (int i = start; i < stop; i++) {
+                String[] record = records.get(i);
+                input[i - start] = Float.parseFloat(record[signalNumber]);
+            }
+            return input;
+        } else {
+            System.out.println("Invalid signal number");
+            return null;
+        }
+    }
+
+
+    public static List<String[]> getRecords(String path) {
+        Reader reader;
         try {
             reader = Files.newBufferedReader(Paths.get(path));
             CSVReader csvReader = new CSVReader(reader);
             List<String[]> records = csvReader.readAll();
-
-            float[] input = new float[stop - start];
-
-            if (signalNumber <= records.get(0).length - 1 && signalNumber > 0) {
-                for (int i = start; i < stop; i++) {
-                    String[] record = records.get(i);
-                    input[i - start] = Float.parseFloat(record[signalNumber]);
-                }
-                return input;
-            } else {
-                System.out.println("Invalid signal number");
-                return null;
-            }
+            return records;
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+
     }
 
 }

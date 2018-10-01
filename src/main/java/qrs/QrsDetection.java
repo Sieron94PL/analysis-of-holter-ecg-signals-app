@@ -57,6 +57,7 @@ public class QrsDetection {
                         temp.add(new Sample(i, input[i] / Math.max(input)));
                         i++;
                     }
+
                     peaks.add(getPeak(temp));
                     temp.clear();
                 }
