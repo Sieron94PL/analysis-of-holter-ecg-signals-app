@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/parameters/Acceleration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parameters/DecelerationAcceleration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parameters/Deceleration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parameters/HeartRateTurbulence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parameters/HeartRateTurbulence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sample/Main.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -110,7 +107,7 @@
         <counts>
           <entry key="css" value="5" />
           <entry key="fxml" value="4" />
-          <entry key="java" value="285" />
+          <entry key="java" value="286" />
           <entry key="png" value="1" />
           <entry key="xml" value="2" />
         </counts>
@@ -119,7 +116,7 @@
         <counts>
           <entry key="CSS" value="5" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="285" />
+          <entry key="JAVA" value="286" />
           <entry key="XML" value="6" />
         </counts>
       </usages-collector>
@@ -128,14 +125,14 @@
           <entry key="css" value="220" />
           <entry key="dummy" value="54" />
           <entry key="fxml" value="366" />
-          <entry key="java" value="31624" />
+          <entry key="java" value="31627" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="220" />
-          <entry key="JAVA" value="31624" />
+          <entry key="JAVA" value="31627" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="XML" value="367" />
         </counts>
@@ -147,7 +144,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Deceleration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="281">
@@ -162,8 +159,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Acceleration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
+            <state relative-caret-position="-93">
               <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,7 +192,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRateVariability.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
+            <state relative-caret-position="-175">
               <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
             </state>
           </provider>
@@ -294,12 +303,12 @@
         <option value="$PROJECT_DIR$/src/main/java/model/Sample.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/HeartRate.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/ParametersScene.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/PrematureVentricularContractions.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/HeartRateTurbulence.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/DecelerationAcceleration.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/Acceleration.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/Deceleration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
       </list>
     </option>
   </component>
@@ -434,7 +443,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538552560781" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538552804772" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../deadbolt-2-scala-examples" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -662,12 +671,12 @@
       <workItem from="1537894306920" duration="594000" />
       <workItem from="1538379799626" duration="18000" />
       <workItem from="1538406536746" duration="1192000" />
-      <workItem from="1538551326604" duration="1221000" />
+      <workItem from="1538551326604" duration="1464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="515130000" />
+    <option name="totallyTimeSpent" value="515373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -1037,16 +1046,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="91" column="42" selection-start-line="91" selection-start-column="42" selection-end-line="91" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Integration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1054,17 +1053,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRateVariability.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/parameters/PrematureVentricularContractions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="23" column="45" lean-forward="true" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRateVariability.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-175">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1089,9 +1088,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Deceleration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Acceleration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
+        <state relative-caret-position="-93">
           <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1099,10 +1108,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Deceleration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        <state relative-caret-position="66">
+          <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

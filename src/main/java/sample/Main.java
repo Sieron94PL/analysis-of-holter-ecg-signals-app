@@ -134,7 +134,7 @@ public class Main extends Application {
             averageTO = HeartRateTurbulence.averageTO(intervalsRR);
             averageTS = HeartRateTurbulence.averageTS(intervalsRR);
             DC = Deceleration.deceleration(intervalsRR);
-            AC = Deceleration.acceleration(intervalsRR);
+            AC = Acceleration.acceleration(intervalsRR);
 
             HBox selectTimeHBox = Partials.selectTime(fromTime);
 
