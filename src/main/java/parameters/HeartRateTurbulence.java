@@ -26,18 +26,6 @@ public class HeartRateTurbulence {
         return sum / sizePVCs;
     }
 
-    public static float averageTS(List<Sample> intervalsRR) {
-        float sum = 0.0f;
-        int sizePVCs = 0;
-        for (int i = 0; i < intervalsRR.size(); i++) {
-            if (intervalsRR.get(i).isPVC()) {
-                sum += intervalsRR.get(i).getTS();
-                sizePVCs++;
-            }
-        }
-        return sum / sizePVCs;
-    }
-
     public static List<Sample> calculateTO(List<Sample> intervalsRR) {
         for (int i = 2; i < intervalsRR.size() - 2; i++) {
             if (intervalsRR.get(i).isPVC()) {
@@ -49,6 +37,18 @@ public class HeartRateTurbulence {
             }
         }
         return intervalsRR;
+    }
+
+    public static float averageTS(List<Sample> intervalsRR) {
+        float sum = 0.0f;
+        int sizePVCs = 0;
+        for (int i = 0; i < intervalsRR.size(); i++) {
+            if (intervalsRR.get(i).isPVC()) {
+                sum += intervalsRR.get(i).getTS();
+                sizePVCs++;
+            }
+        }
+        return sum / sizePVCs;
     }
 
     public static List<Sample> calculateTS(List<Sample> intervalsRR) {

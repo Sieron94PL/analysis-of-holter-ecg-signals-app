@@ -133,8 +133,8 @@ public class Main extends Application {
             SDNN = HeartRateVariability.SDNN(intervalsRR, averageIntervalsRR);
             averageTO = HeartRateTurbulence.averageTO(intervalsRR);
             averageTS = HeartRateTurbulence.averageTS(intervalsRR);
-            DC = DecelerationAcceleration.deceleration(intervalsRR);
-            AC = DecelerationAcceleration.acceleration(intervalsRR);
+            DC = Deceleration.deceleration(intervalsRR);
+            AC = Deceleration.acceleration(intervalsRR);
 
             HBox selectTimeHBox = Partials.selectTime(fromTime);
 
