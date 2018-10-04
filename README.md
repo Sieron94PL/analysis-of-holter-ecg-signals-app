@@ -10,6 +10,6 @@ Basic functionalities:
 * R-peak detecting (based on Pan-Tompkins algorithm)
 * Premature Ventricular Contractions (PVC) detecting
 * analyzing Heart Rate Variability (HRV) on chart
-* appointing parameters: HR, HRT, HRV, SDNN, DC, AC 
+* calculating parameters: HR, HRT, HRV, SDNN, DC, AC 
 
 <img src="https://user-images.githubusercontent.com/25122911/46475468-e1879f00-c7e5-11e8-9221-ee80f664c5eb.png" width="33%" height="33%"> <img src="https://user-images.githubusercontent.com/25122911/46475469-e2203580-c7e5-11e8-88a6-c6ab802f2a20.png" width="33%" height="33%"> <img src="https://user-images.githubusercontent.com/25122911/46475470-e2203580-c7e5-11e8-890b-ea019e7cebbe.png" width="33%" height="33%">
