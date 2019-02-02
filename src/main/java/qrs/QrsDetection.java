@@ -36,8 +36,8 @@ public class QrsDetection {
                 id = samples.get(i).getId();
             }
         }
-        max = ecgSignal[id - 5];
-        for (int i = id - 5; i < id + 5; i++) {
+        max = ecgSignal[id - 10];
+        for (int i = id - 10; i < id + 10; i++) {
             if (ecgSignal[i] > max) {
                 max = ecgSignal[i];
                 id = i;
@@ -46,10 +46,10 @@ public class QrsDetection {
         return new Sample(id, max);
     }
 
-    public List<Sample> detect(float[] input) {
+    public List<Sample> detect(float[] input, float samplingFrequency) {
         List<Sample> temp = new ArrayList<>();
         List<Sample> peaks = new ArrayList<>();
-        input = Normalization.normalize(input);
+        input = Normalization.normalize(input, samplingFrequency);
         for (int i = 5; i < input.length; i++) {
             if (input[i] / Math.max(input) > Math.THRESHOLD_VALUE) {
                 if (isQRS(Arrays.copyOfRange(input, i - 5, i + 5))) {
@@ -57,7 +57,6 @@ public class QrsDetection {
                         temp.add(new Sample(i, input[i] / Math.max(input)));
                         i++;
                     }
-
                     peaks.add(getPeak(temp));
                     temp.clear();
                 }

@@ -2,7 +2,25 @@ package qrs;
 
 import utils.Math;
 
+import java.util.Arrays;
+
 public class Normalization {
+
+    public static float[] normalize(float[] input, float samplingFrequency) {
+        float[] output = new float[input.length];
+        for (int i = 0; i < input.length; i++) {
+            int start = i;
+            int stop = start + (int) (samplingFrequency * 1.5f);
+            float max = Math.max(Arrays.copyOfRange(input, start, stop));
+            float min = Math.min(Arrays.copyOfRange(input, start, stop));
+            stop = (stop > input.length - 1) ? input.length - 1 : stop;
+            while (i <= stop) {
+                output[i] = (input[i] - min) / (max - min);
+                i++;
+            }
+        }
+        return output;
+    }
 
     public static float[] normalize(float[] input) {
         float[] output = new float[input.length];

@@ -1,7 +1,5 @@
 package qrs;
 
-import utils.Math;
-
 public class Derivative {
 
     public static float[] derivative(float[] input, float samplingFrequency) {
