@@ -1,10 +1,7 @@
 package parameters;
 
 import model.Sample;
-import qrs.Normalization;
-import utils.Math;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PrematureVentricularContractions {

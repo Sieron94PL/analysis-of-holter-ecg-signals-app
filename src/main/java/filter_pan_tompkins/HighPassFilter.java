@@ -13,11 +13,13 @@ public class HighPassFilter {
      */
     public static float[] filter(float[] input) {
         float[] output = new float[input.length];
-        for (int i = 0; i < input.length; i++) {
+        for (int i = 32; i < input.length; i++) {
             if (i < 32)
                 output[i] = input[i];
-            else
-                output[i] = 32 * input[i - 16] - (output[i - 1] + input[i] - input[i - 32]);
+            else {
+                output[i] = 32 * input[i - 16] - Math.abs(output[i - 1] + input[i] - input[i - 32]);
+            }
+
         }
         return output;
     }

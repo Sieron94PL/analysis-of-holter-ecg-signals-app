@@ -18,7 +18,10 @@ public class HeartRateVariability {
         for (int i = 1; i < peaks.size(); i++) {
             firstPeak = peaks.get(i - 1).getId();
             secondPeak = peaks.get(i).getId();
-            intervalsRR.add(new Sample(firstPeak, intervalRR(firstPeak, secondPeak, samplingFrequency)));
+            float intervalRR = intervalRR(firstPeak, secondPeak, samplingFrequency);
+            if (intervalRR < 2000.0f) {
+                intervalsRR.add(new Sample(firstPeak, intervalRR(firstPeak, secondPeak, samplingFrequency)));
+            }
         }
         return intervalsRR;
     }
@@ -31,11 +34,4 @@ public class HeartRateVariability {
         return (float) java.lang.Math.sqrt(1.0f / (intervalsRR.size() - 1.0f) * sum);
     }
 
-    public static void displayIntervalsRR(List<Sample> intervalsRR) {
-        System.out.println("Intervals RR");
-        for (int i = 0; i < intervalsRR.size(); i++) {
-            System.out.println("intervalRR " + intervalsRR.get(i).getId() + " = " + intervalsRR.get(i).getValue() + "ms "
-                    + intervalsRR.get(i).isPVC());
-        }
-    }
 }

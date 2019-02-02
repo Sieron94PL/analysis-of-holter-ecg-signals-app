@@ -1,4 +1,4 @@
-package sample;
+package scenes;
 
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -6,14 +6,13 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import model.Sample;
 import utils.Math;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MinuteInputSignal {
+public class MainScene {
 
     public static List<LineChart<Number, Number>> showInputSignal(int start, int stop, float samplingFrequency, float[] inputSignal, int step) {
 
@@ -25,13 +24,39 @@ public class MinuteInputSignal {
         double upperBoundAxisY = 1.2;
         double tickUnitAxisY = 0.1;
 
-
         int seconds = (int) Math.sampleToSecond(start, samplingFrequency);
 
         final NumberAxis firstLineChartX = new NumberAxis(seconds, seconds + 15, tickUnitAxisX);
         final NumberAxis secondLineChartX = new NumberAxis(seconds + 15, seconds + 30, tickUnitAxisX);
         final NumberAxis thirdLineChartX = new NumberAxis(seconds + 30, seconds + 45, tickUnitAxisX);
         final NumberAxis fourthLineChartX = new NumberAxis(seconds + 45, seconds + 60, tickUnitAxisX);
+
+        firstLineChartX.setTickLabelFormatter(new NumberAxis.DefaultFormatter(firstLineChartX) {
+            @Override
+            public String toString(Number object) {
+                return Math.secondsToLocalTime(object.intValue());
+            }
+        });
+        secondLineChartX.setTickLabelFormatter(new NumberAxis.DefaultFormatter(secondLineChartX) {
+            @Override
+            public String toString(Number object) {
+                return Math.secondsToLocalTime(object.intValue());
+            }
+        });
+        thirdLineChartX.setTickLabelFormatter(new NumberAxis.DefaultFormatter(thirdLineChartX) {
+            @Override
+            public String toString(Number object) {
+                return Math.secondsToLocalTime(object.intValue());
+            }
+        });
+        fourthLineChartX.setTickLabelFormatter(new NumberAxis.DefaultFormatter(fourthLineChartX) {
+            @Override
+            public String toString(Number object) {
+                return Math.secondsToLocalTime(object.intValue());
+            }
+        });
+
+
         fourthLineChartX.setLabel("Time [seconds]");
         fourthLineChartX.setStyle("-fx-font-style: italic;");
 
@@ -109,9 +134,10 @@ public class MinuteInputSignal {
             XYChart.Data<Number, Number> data = new XYChart.Data<>(seconds, inputSignal[peakId]);
 
             if (peakId <= localStep + step) {
-                if (peaks.get(i).isPVC())
-                    firstLineChartPVCsSeries.getData().add(data);
-                else
+                if (peaks.get(i).isPVC()) {
+                    firstLineChartPVCsSeries.getData().add(new XYChart.Data<>(seconds, inputSignal[peakId]));
+                    firstLineChartPVCsSeries.getData().add(linePVC(data, seconds, Color.RED));
+                } else
                     firstLineChartPeakSeries.getData().add(data);
             } else if (peakId > localStep + step && peakId <= (2 * localStep) + step) {
                 if (peaks.get(i).isPVC()) {
@@ -152,37 +178,38 @@ public class MinuteInputSignal {
                 inputSignalLineCharts.get(3).getData().add(fourthLineChartPeakSeries);
                 inputSignalLineCharts.get(3).getData().add(fourthLineChartPVCsSeries);
 
-                addTooltipPVCs(firstLineChartPVCsSeries, samplingFrequency, peaks);
-                addTooltipPVCs(secondLineChartPVCsSeries, samplingFrequency, peaks);
-                addTooltipPVCs(thirdLineChartPVCsSeries, samplingFrequency, peaks);
-                addTooltipPVCs(fourthLineChartPVCsSeries, samplingFrequency, peaks);
+                addTooltipPVCs(firstLineChartPVCsSeries, samplingFrequency, peaks, start, step);
+                addTooltipPVCs(secondLineChartPVCsSeries, samplingFrequency, peaks, start, step);
+                addTooltipPVCs(thirdLineChartPVCsSeries, samplingFrequency, peaks, start, step);
+                addTooltipPVCs(fourthLineChartPVCsSeries, samplingFrequency, peaks, start, step);
 
-                addPeaksTooltips(firstLineChartPeakSeries, samplingFrequency, peaks);
-                addPeaksTooltips(secondLineChartPeakSeries, samplingFrequency, peaks);
-                addPeaksTooltips(thirdLineChartPeakSeries, samplingFrequency, peaks);
-                addPeaksTooltips(fourthLineChartPeakSeries, samplingFrequency, peaks);
+                addPeaksTooltips(firstLineChartPeakSeries, samplingFrequency, peaks, start, step);
+                addPeaksTooltips(secondLineChartPeakSeries, samplingFrequency, peaks, start, step);
+                addPeaksTooltips(thirdLineChartPeakSeries, samplingFrequency, peaks, start, step);
+                addPeaksTooltips(fourthLineChartPeakSeries, samplingFrequency, peaks, start, step);
             }
 
-        } else {
-            inputSignalLineCharts.get(0).getData().remove(1);
-            inputSignalLineCharts.get(1).getData().remove(1);
-            inputSignalLineCharts.get(2).getData().remove(1);
-            inputSignalLineCharts.get(3).getData().remove(1);
+        } else if (inputSignalLineCharts.get(0).getData().size() > 1) {
             inputSignalLineCharts.get(0).getData().remove(2);
             inputSignalLineCharts.get(1).getData().remove(2);
             inputSignalLineCharts.get(2).getData().remove(2);
             inputSignalLineCharts.get(3).getData().remove(2);
+            inputSignalLineCharts.get(0).getData().remove(1);
+            inputSignalLineCharts.get(1).getData().remove(1);
+            inputSignalLineCharts.get(2).getData().remove(1);
+            inputSignalLineCharts.get(3).getData().remove(1);
         }
+
 
         return inputSignalLineCharts;
     }
 
-    private static void addTooltipPVCs(XYChart.Series<Number, Number> lineChart, float samplingFrequency, List<Sample> peaks) {
-        for (XYChart.Data<Number, Number> d : lineChart.getData()) {
-            Sample sample = Sample.findById(Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency), peaks);
+    private static void addTooltipPVCs(XYChart.Series<Number, Number> series, float samplingFrequency, List<Sample> peaks, int start, int step) {
+        for (XYChart.Data<Number, Number> d : series.getData()) {
+            Sample sample = Sample.findById(Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency) - start + step, peaks);
             String info =
                     "Peak no: " + Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency) + "\n" +
-                            "Time: " + Math.secondsToLocalTime((int) Math.sampleToSecond(sample.getId(), samplingFrequency)) + "\n" +
+                            "Time: " + Math.secondsToLocalTime((int) Math.sampleToSecond(sample.getId() + start, samplingFrequency)) + "\n" +
                             "TO: " + sample.getTO() + "\n" +
                             "TS: " + sample.getTS() + "\n" +
                             "Duration: " + sample.getValue() + "ms";
@@ -193,12 +220,12 @@ public class MinuteInputSignal {
         }
     }
 
-    private static void addPeaksTooltips(XYChart.Series<Number, Number> lineChart, float samplingFrequency, List<Sample> peaks) {
-        for (XYChart.Data<Number, Number> d : lineChart.getData()) {
-            Sample sample = Sample.findById(Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency), peaks);
+    private static void addPeaksTooltips(XYChart.Series<Number, Number> series, float samplingFrequency, List<Sample> peaks, int start, int step) {
+        for (XYChart.Data<Number, Number> d : series.getData()) {
+            Sample sample = Sample.findById(Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency) - start + step, peaks);
             String info =
                     "Peak no: " + sample.getId() + "\n" +
-                            "Time: " + Math.secondsToLocalTime((int) Math.sampleToSecond(sample.getId(), samplingFrequency)) + "\n" +
+                            "Time: " + Math.secondsToLocalTime((int) Math.sampleToSecond(sample.getId() + start, samplingFrequency)) + "\n" +
                             "Duration: " + sample.getValue() + "ms" + "\n";
 
             Tooltip tooltip = new Tooltip(info);
@@ -216,6 +243,4 @@ public class MinuteInputSignal {
         data.setNode(line);
         return data;
     }
-
-
 }

@@ -13,7 +13,7 @@ public class ReadCardioPathSimple {
     public static ECGSignal load(String path, int channels, int samplingFrequency) {
 
         int channel = 0;
-        int bajt;
+        int bit;
         int i = 0;
         try {
             FileInputStream readSource = new FileInputStream(path);
@@ -22,7 +22,7 @@ public class ReadCardioPathSimple {
             ECGSignal signal = new ECGSignal(channels, size, samplingFrequency);
             BufferedInputStream readBuffer = new BufferedInputStream(readSource);
 
-            while ((bajt = readBuffer.read()) != -1) {
+            while ((bit = readBuffer.read()) != -1) {
                 if (channel == channels) {
                     ++i;
                     channel = 0;
@@ -30,7 +30,7 @@ public class ReadCardioPathSimple {
                 if (i >= size) {
                     break;
                 }
-                signal.setSample(channel, i, (float) bajt);
+                signal.setSample(channel, i, (float) bit);
                 ++channel;
             }
             readBuffer.close();
@@ -70,7 +70,8 @@ public class ReadCardioPathSimple {
             e.printStackTrace();
         }
         return null;
-
     }
+
+
 
 }

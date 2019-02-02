@@ -19,6 +19,8 @@ public class Sample {
         this.HR = HR;
     }
 
+    public Sample() {}
+
     public Sample(int id, float value) {
         this.id = id;
         this.value = value;

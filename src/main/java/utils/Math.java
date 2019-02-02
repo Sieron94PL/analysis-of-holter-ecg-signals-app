@@ -6,8 +6,6 @@ import java.time.format.DateTimeFormatter;
 public class Math {
 
     public final static float THRESHOLD_VALUE = 0.15f;
-    public final static float SAMPLING_FREQUENCY = 360.0f;
-    public final static float SAMPLING_PERIOD = 1.0f / SAMPLING_FREQUENCY;
     public final static float ONE_MINUTE = toMillisecond(60.0f);
 
     public static float mean(float[] input) {
@@ -60,14 +58,6 @@ public class Math {
 
     public static float toMillisecond(float value) {
         return 1000.0f * value;
-    }
-
-    public static String getFileExtension(String path) {
-        int lastIndexOf = path.lastIndexOf(".");
-        if (lastIndexOf == -1) {
-            return ""; // empty extension
-        }
-        return path.substring(lastIndexOf);
     }
 
 }

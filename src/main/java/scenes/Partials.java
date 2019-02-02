@@ -1,13 +1,12 @@
-package sample;
+package scenes;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.stage.FileChooser;
+import utils.FileHelper;
 import utils.Math;
 import utils.ReadCardioPathSimple;
 
-import java.io.File;
 import java.time.LocalTime;
 
 public class Partials {
@@ -28,13 +27,7 @@ public class Partials {
         return menuBar;
     }
 
-    public static String getPath() {
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(null);
-        return file.getAbsolutePath();
-    }
-
-    public static HBox radioButtonsPeaks() {
+    public static HBox peaksRadioButtonHBox() {
         HBox hbox = new HBox();
 
         RadioButton radioButtonDisablePeaks = new RadioButton("Disable peaks");
@@ -48,7 +41,7 @@ public class Partials {
         return hbox;
     }
 
-    public static HBox timeRange() {
+    public static HBox timeRangeHBox() {
         HBox hbox = new HBox();
 
         Label labelFromTime = new Label("From");
@@ -73,7 +66,7 @@ public class Partials {
         return hbox;
     }
 
-    public static HBox selectTime(int seconds) {
+    public static HBox selectTimeHBox(int seconds) {
 
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.CENTER_LEFT);
@@ -96,18 +89,24 @@ public class Partials {
         return hbox;
     }
 
-    public static Label fileDirectory(String path, float samplingFrequency) {
-        float seconds;
-        if (Math.getFileExtension(path).equals(".csv"))
-            seconds = Math.sampleToSecond(ReadCardioPathSimple.getRecords(path).size(), samplingFrequency);
-        else
-            seconds = Math.sampleToSecond(ReadCardioPathSimple.load(path, 3, (int) samplingFrequency).getChannelLength(0), samplingFrequency);
-        Label labelFileDirectory = new Label(path + " (duration: " + LocalTime.MIN.plusSeconds((int) seconds).toString() + ")");
+    public static Label fileDirectoryLabel(String path) {
+        Label labelFileDirectory = new Label(path);
         labelFileDirectory.setStyle("-fx-font-size: 10px; -fx-font-style: italic; -fx-font-weight: bold;");
         return labelFileDirectory;
     }
 
-    public static HBox channelNumberRadioButton(int channelNumber) {
+
+    public static void updateFileDirectoryLabel(String path, Label fileDirectoryLabel, float samplingFrequency, int channels) {
+        float seconds;
+        if (FileHelper.getFileExtension(path).equals(".csv"))
+            seconds = Math.sampleToSecond(ReadCardioPathSimple.getRecords(path).size(), samplingFrequency);
+        else
+            seconds = Math.sampleToSecond(ReadCardioPathSimple.load(path, channels, (int) samplingFrequency).getChannelLength(0), samplingFrequency);
+        fileDirectoryLabel.setText(path + " (duration: " + LocalTime.MIN.plusSeconds((int) seconds).toString() + ")");
+    }
+
+
+    public static HBox channelNumberRadioButtonHBox(int channelNumber) {
         HBox hbox = new HBox();
 
         ToggleGroup toggleGroup = new ToggleGroup();
@@ -133,13 +132,13 @@ public class Partials {
 
         TextField samplingFrequencyTextField = new TextField();
 
+        CheckBox checkBox = new CheckBox();
+
         HBox hbox = new HBox();
         hbox.setStyle("-fx-padding: 5 0 0 0; -fx-font-size: 10px; -fx-font-style: italic;");
         hbox.setSpacing(15);
-        hbox.getChildren().addAll(samplingFrequencyLabel, samplingFrequencyTextField);
+        hbox.getChildren().addAll(samplingFrequencyLabel, samplingFrequencyTextField, checkBox);
         return hbox;
-
-
     }
 
 }

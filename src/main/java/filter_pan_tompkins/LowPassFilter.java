@@ -17,7 +17,7 @@ public class LowPassFilter {
             if (i < 12)
                 output[i] = input[i];
             else
-                output[i] = 2 * output[i - 1] - output[i - 2] + input[i] - 2 * input[i - 6] + input[i - 12];
+                output[i] = 2 * output[i - 1] - output[i - 2] + input[i] - (2 * input[i - 6]) + input[i - 12];
         }
         return output;
     }

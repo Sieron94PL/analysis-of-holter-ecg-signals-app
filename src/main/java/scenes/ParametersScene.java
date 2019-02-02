@@ -1,4 +1,4 @@
-package sample;
+package scenes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -105,7 +105,7 @@ public class ParametersScene {
     }
 
 
-    private static TableView heartRateVariabilityTableView(int start, List<Sample> intervalsRR, float samplingFrequency) {
+    public static TableView heartRateVariabilityTableView(int start, List<Sample> intervalsRR, float samplingFrequency) {
         TableView<HeartRateVariabilityData> heartRateVariabilityTableView = new TableView();
         heartRateVariabilityTableView.setPrefWidth(450);
 

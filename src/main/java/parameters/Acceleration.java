@@ -2,31 +2,100 @@ package parameters;
 
 import model.Sample;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Acceleration {
 
-    public static float acceleration(List<Sample> intervalsRR) {
+    private static boolean isAcceleration(float currentValue, float previousValue) {
+        return currentValue < previousValue;
+    }
+
+    public static List<Sample> signalAveraging(List<Sample> intervalsRR) {
         float X0 = 0.0f;
         float X1 = 0.0f;
+        float X2 = 0.0f;
+        float X3 = 0.0f;
+        float X4 = 0.0f;
+        float X5 = 0.0f;
+        float X6 = 0.0f;
         float X_1 = 0.0f;
         float X_2 = 0.0f;
-        int size = 0;
+        float X_3 = 0.0f;
+        float X_4 = 0.0f;
+        float X_5 = 0.0f;
+        float X_6 = 0.0f;
+        int accelerations = 0;
 
-        for (int i = 2; i < intervalsRR.size() - 1; i++) {
-            if (intervalsRR.get(i).getValue() < intervalsRR.get(i - 1).getValue()) {
+        for (int i = 6; i < intervalsRR.size() - 6; i++) {
+            if (isAcceleration(intervalsRR.get(i).getValue(), intervalsRR.get(i - 1).getValue())) {
                 X0 += intervalsRR.get(i).getValue();
                 X1 += intervalsRR.get(i + 1).getValue();
                 X_1 += intervalsRR.get(i - 1).getValue();
                 X_2 += intervalsRR.get(i - 2).getValue();
-                size++;
+
+                X_3 += intervalsRR.get(i - 3).getValue();
+                X_4 += intervalsRR.get(i - 4).getValue();
+                X_5 += intervalsRR.get(i - 5).getValue();
+                X_6 += intervalsRR.get(i - 6).getValue();
+                X2 += intervalsRR.get(i + 2).getValue();
+                X3 += intervalsRR.get(i + 3).getValue();
+                X4 += intervalsRR.get(i + 4).getValue();
+                X5 += intervalsRR.get(i + 5).getValue();
+                X6 += intervalsRR.get(i + 6).getValue();
+                accelerations++;
             }
         }
 
-        X0 /= size;
-        X1 /= size;
-        X_1 /= size;
-        X_2 /= size;
+        X0 /= accelerations;
+        X1 /= accelerations;
+        X2 /= accelerations;
+        X3 /= accelerations;
+        X4 /= accelerations;
+        X5 /= accelerations;
+        X6 /= accelerations;
+        X_1 /= accelerations;
+        X_2 /= accelerations;
+        X_3 /= accelerations;
+        X_4 /= accelerations;
+        X_5 /= accelerations;
+        X_6 /= accelerations;
+
+        List<Sample> signalAveraging = new ArrayList<>();
+        signalAveraging.add(new Sample(-6, X_6));
+        signalAveraging.add(new Sample(-5, X_5));
+        signalAveraging.add(new Sample(-4, X_4));
+        signalAveraging.add(new Sample(-3, X_3));
+        signalAveraging.add(new Sample(-2, X_2));
+        signalAveraging.add(new Sample(-1, X_1));
+        signalAveraging.add(new Sample(0, X0));
+        signalAveraging.add(new Sample(1, X1));
+        signalAveraging.add(new Sample(2, X2));
+        signalAveraging.add(new Sample(3, X3));
+        signalAveraging.add(new Sample(4, X4));
+        signalAveraging.add(new Sample(5, X5));
+        signalAveraging.add(new Sample(6, X6));
+
+        return signalAveraging;
+
+    }
+
+    private static float findById(List<Sample> signalAveraging, int id) {
+        for (int i = 0; i < signalAveraging.size(); i++) {
+            if (signalAveraging.get(i).getId() == id) {
+                return signalAveraging.get(i).getValue();
+            }
+        }
+        return -1.0f;
+    }
+
+    public static float acceleration(List<Sample> signalAveraging) {
+        float X0 = findById(signalAveraging, 0);
+        float X1 = findById(signalAveraging, 1);
+        float X_1 = findById(signalAveraging, -1);
+        float X_2 = findById(signalAveraging, -2);
 
         return (X0 + X1 - X_1 - X_2) / 4;
     }

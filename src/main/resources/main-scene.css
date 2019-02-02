@@ -13,6 +13,10 @@
     -fx-background-color: green;
 }
 
+.onHoverBeat {
+    -fx-background-color: orange;
+}
+
 .tooltip {
     -fx-background: rgba(30, 30, 30, 1.0);
     -fx-text-fill: white;

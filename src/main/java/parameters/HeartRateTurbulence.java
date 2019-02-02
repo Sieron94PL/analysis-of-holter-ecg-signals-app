@@ -27,7 +27,7 @@ public class HeartRateTurbulence {
     }
 
     public static List<Sample> calculateTO(List<Sample> intervalsRR) {
-        for (int i = 2; i < intervalsRR.size() - 2; i++) {
+        for (int i = 3; i < intervalsRR.size() - 2; i++) {
             if (intervalsRR.get(i).isPVC()) {
                 float RR1 = intervalsRR.get(i + 1).getValue();
                 float RR2 = intervalsRR.get(i + 2).getValue();
@@ -53,19 +53,20 @@ public class HeartRateTurbulence {
 
     public static List<Sample> calculateTS(List<Sample> intervalsRR) {
         float max;
-        for (int i = 0; i < intervalsRR.size() - 15; i++) {
+        for (int i = 0; i < intervalsRR.size() - 21; i++) {
             if (intervalsRR.get(i).isPVC()) {
                 max = 0.0f;
-                for (int j = i; j < i + 15; j++) {
+                for (int j = i; j < i + 16; j++) {
                     float RR0 = intervalsRR.get(j + 1).getValue();
                     float RR1 = intervalsRR.get(j + 2).getValue();
                     float RR3 = intervalsRR.get(j + 4).getValue();
                     float RR4 = intervalsRR.get(j + 5).getValue();
                     if (max < TS(RR4, RR3, RR1, RR0)) {
                         max = TS(RR4, RR3, RR1, RR0);
-                        intervalsRR.get(i).setTS(max);
                     }
                 }
+                intervalsRR.get(i).setTS(max);
+
             }
         }
         return intervalsRR;
