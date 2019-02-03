@@ -16,8 +16,8 @@ public class PrematureVentricularContractions {
 
     public static List<Sample> detectPVCs(List<Sample> intervalsRR, float averageIntervalRR) {
         for (int i = 1; i < intervalsRR.size(); i++) {
-            if (prematurity(intervalsRR.get(i - 1).getValue(), averageIntervalRR) > 0.15f &&
-                    compensatoryPause(intervalsRR.get(i).getValue(), averageIntervalRR) > 0.15f) {
+            if (prematurity(intervalsRR.get(i - 1).getValue(), averageIntervalRR) > 0.1f &&
+                    compensatoryPause(intervalsRR.get(i).getValue(), averageIntervalRR) > 0.1f) {
                 intervalsRR.get(i).setPVC(true);
             }
         }

@@ -10,7 +10,7 @@ public class Normalization {
         float[] output = new float[input.length];
         for (int i = 0; i < input.length; i++) {
             int start = i;
-            int stop = start + (int) (samplingFrequency * 1.5f);
+            int stop = start + (int) (samplingFrequency * 4.0f);
             float max = Math.max(Arrays.copyOfRange(input, start, stop));
             float min = Math.min(Arrays.copyOfRange(input, start, stop));
             stop = (stop > input.length - 1) ? input.length - 1 : stop;

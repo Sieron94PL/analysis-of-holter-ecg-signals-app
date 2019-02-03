@@ -7,6 +7,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -54,8 +56,69 @@ public class Main extends Application {
 
     private Label fileDirectoryLabel;
 
+    private final static String CSV_DATA_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-ecgSignal\\";
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+//
+//        int samplingFrequency = 360;
+//
+//        /*ECG Signal from .csv file.*/
+//        int start = 0;
+//        int stop = 10000;
+//        float[] inputSignal = ReadCardioPathSimple.loadCSV(CSV_DATA_DIRECTORY + "102.csv", 1, start, stop);
+//        float[] integrationSignal = Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, samplingFrequency), samplingFrequency)), samplingFrequency);
+//        float[] normalizationSignal = Normalization.normalize(integrationSignal);
+//        QrsDetection qrsDetection = new QrsDetection(inputSignal);
+//        peaks = qrsDetection.detect(inputSignal);
+//
+//        /*ECG Signal from .dat file.*/
+////        int channels = ReadCardioPathNumberOfChannels.load(ECG_DATA_DIRECTORY);
+////        ECGSignal signal = ReadCardioPathSimple.load(ECG_DATA_DIRECTORY + fileDAT, channels, samplingFrequency);
+////        float[] inputSignal = Arrays.copyOfRange(signal.getChannel(0), start, stop); //length = 9653888
+//        /*Normalization*/
+////        inputSignal = Normalization.normalize(Normalization.cancelDC(inputSignal));
+//
+//
+//        final NumberAxis xAxis = new NumberAxis(0, 10000,10);
+//        final NumberAxis yAxis = new NumberAxis();
+//
+//        final NumberAxis xAxis1 = new NumberAxis(0, 1000, 10);
+//        final NumberAxis yAxis1 = new NumberAxis();
+//
+//        final LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
+//        final LineChart<Number, Number> lineChart1 = new LineChart<Number, Number>(xAxis1, yAxis1);
+//
+//        VBox vBox = new VBox();
+//
+//        XYChart.Series inputSignalSeries = new XYChart.Series();
+//        XYChart.Series filteredSignalSeries = new XYChart.Series();
+//        XYChart.Series integratedSignalSeries = new XYChart.Series();
+//        XYChart.Series normalizationSignalSeries = new XYChart.Series();
+//
+//        for(int i = 0; i < normalizationSignal.length; i++){
+//            normalizationSignalSeries.getData().add(new XYChart.Data(i, normalizationSignal[i]));
+//        }
+//
+//
+//
+//       lineChart.setCreateSymbols(false);
+//
+//        lineChart.getData().add(normalizationSignalSeries);
+//
+//
+//
+//
+//        Scene scene = new Scene(lineChart, 800, 600);
+//
+////        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
+//
+//
+//
+//        primaryStage.setScene(scene);
+//        primaryStage.setTitle("Analysis of Holter ECG signals");
+//        primaryStage.show();
+
 
         MenuBar menuBar = Partials.menu();
         HBox timeRangeHBox = Partials.timeRangeHBox();
@@ -187,8 +250,9 @@ public class Main extends Application {
 
             /**Computing parameters **/
             QrsDetection qrsDetection = new QrsDetection(inputSignal);
-            peaks = qrsDetection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, samplingFrequency), samplingFrequency)), samplingFrequency), samplingFrequency);
             inputSignal = Normalization.normalize(inputSignal);
+            peaks = qrsDetection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, samplingFrequency), samplingFrequency)), samplingFrequency));
+//            inputSignal = Normalization.normalize(inputSignal);
             intervalsRR = HeartRateVariability.getIntervalsRR(peaks, samplingFrequency);
             averageIntervalsRR = HeartRate.averageIntervalRR(intervalsRR);
             intervalsRR = PrematureVentricularContractions.detectPVCs(intervalsRR, averageIntervalsRR);
@@ -201,7 +265,7 @@ public class Main extends Application {
             AC = Acceleration.acceleration(signalAveragingAC);
             List<Sample> signalAveragingDC = Deceleration.signalAveraging(intervalsRR);
             DC = Deceleration.deceleration(signalAveragingDC);
-            Long stopTime = System.currentTimeMillis();
+            inputSignal = Normalization.normalize(inputSignal);
 
 
             HBox selectTimeHBox = Partials.selectTimeHBox(fromTime);

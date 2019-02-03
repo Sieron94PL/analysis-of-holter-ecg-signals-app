@@ -46,10 +46,10 @@ public class QrsDetection {
         return new Sample(id, max);
     }
 
-    public List<Sample> detect(float[] input, float samplingFrequency) {
+    public List<Sample> detect(float[] input) {
         List<Sample> temp = new ArrayList<>();
         List<Sample> peaks = new ArrayList<>();
-        input = Normalization.normalize(input, samplingFrequency);
+        input = Normalization.normalize(Normalization.cancelDC(input));
         for (int i = 5; i < input.length; i++) {
             if (input[i] / Math.max(input) > Math.THRESHOLD_VALUE) {
                 if (isQRS(Arrays.copyOfRange(input, i - 5, i + 5))) {
