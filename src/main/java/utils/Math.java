@@ -5,8 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Math {
 
-    public final static float THRESHOLD_VALUE = 0.15f;
+    public final static float THRESHOLD_QRS_DETECTION = 0.1f;
     public final static float ONE_MINUTE = toMillisecond(60.0f);
+    public final static float THRESHOLD_PVC_DETECTION = 0.1f;
 
     public static float mean(float[] input) {
         float sum = 0.0f;
@@ -41,7 +42,7 @@ public class Math {
     }
 
     public static int secondsToSample(float second, float samplingFrequency) {
-        return (int) java.lang.Math.round(second * samplingFrequency);
+        return java.lang.Math.round(second * samplingFrequency);
     }
 
     public static float sampleToSecond(int sampleId, float samplingFrequency) {

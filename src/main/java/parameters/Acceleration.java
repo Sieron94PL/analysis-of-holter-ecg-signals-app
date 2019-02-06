@@ -13,6 +13,7 @@ public class Acceleration {
         return currentValue < previousValue;
     }
 
+    @SuppressWarnings("Duplicates")
     public static List<Sample> signalAveraging(List<Sample> intervalsRR) {
         float X0 = 0.0f;
         float X1 = 0.0f, X2 = 0.0f, X3 = 0.0f, X4 = 0.0f, X5 = 0.0f, X6 = 0.0f;
@@ -43,7 +44,6 @@ public class Acceleration {
             }
         }
 
-
         signalAveraging.add(new Sample(-6, X_6 / accelerations));
         signalAveraging.add(new Sample(-5, X_5 / accelerations));
         signalAveraging.add(new Sample(-4, X_4 / accelerations));
@@ -62,6 +62,7 @@ public class Acceleration {
 
     }
 
+    @SuppressWarnings("Duplicates")
     public static float acceleration(List<Sample> signalAveraging) {
         float X0 = Sample.findById(0, signalAveraging).getValue();
         float X1 = Sample.findById(1, signalAveraging).getValue();

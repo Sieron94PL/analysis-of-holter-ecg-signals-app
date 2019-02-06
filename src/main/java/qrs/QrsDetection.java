@@ -17,11 +17,11 @@ public class QrsDetection {
 
     private static boolean isQRS(float[] input) {
         for (int i = 0; i < 5; i++) {
-            if (input[i] > Math.THRESHOLD_VALUE)
+            if (input[i] > Math.THRESHOLD_QRS_DETECTION)
                 return false;
         }
-        for (int i = 5; i < 10; i++) {
-            if (input[i] < Math.THRESHOLD_VALUE)
+        for (int i = 5; i < 5; i++) {
+            if (input[i] < Math.THRESHOLD_QRS_DETECTION)
                 return false;
         }
         return true;
@@ -36,7 +36,6 @@ public class QrsDetection {
                 id = samples.get(i).getId();
             }
         }
-        max = ecgSignal[id - 10];
         for (int i = id - 10; i < id + 10; i++) {
             if (ecgSignal[i] > max) {
                 max = ecgSignal[i];
@@ -46,19 +45,33 @@ public class QrsDetection {
         return new Sample(id, max);
     }
 
-    public List<Sample> detect(float[] input) {
+    public float thresholdValue(float[] input, int start, int stop) {
+        return 0.1f * Math.max(Arrays.copyOfRange(input, start, stop));
+    }
+
+    public List<Sample> detect(float[] input, float samplingFrequency) {
         List<Sample> temp = new ArrayList<>();
         List<Sample> peaks = new ArrayList<>();
-        input = Normalization.normalize(Normalization.cancelDC(input));
-        for (int i = 5; i < input.length; i++) {
-            if (input[i] / Math.max(input) > Math.THRESHOLD_VALUE) {
+        input = Normalization.normalize(input);
+        int start = 0;
+        int stop = java.lang.Math.round(5.0f * samplingFrequency);
+        stop = (input.length - 1 > stop) ? stop : input.length - 1;
+        float thresholdValue = thresholdValue(input, start, stop);
+
+        for (int i = 5; i < input.length - 5; i++) {
+            if (input[i] > thresholdValue) {
                 if (isQRS(Arrays.copyOfRange(input, i - 5, i + 5))) {
-                    while (input[i] / Math.max(input) > Math.THRESHOLD_VALUE && i < input.length - 1) {
+                    while (input[i] / Math.max(input) > thresholdValue && i < input.length - 1) {
                         temp.add(new Sample(i, input[i] / Math.max(input)));
                         i++;
                     }
                     peaks.add(getPeak(temp));
                     temp.clear();
+                    if (i > stop) {
+                        stop = i + java.lang.Math.round(5.0f * samplingFrequency);
+                        stop = (input.length - 1 > stop) ? stop : input.length - 1;
+                        thresholdValue = thresholdValue(input, i, stop);
+                    }
                 }
             }
         }

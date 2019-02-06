@@ -9,6 +9,7 @@ public class HeartRate {
     public static float averageIntervalRR(List<Sample> intervalsRR) {
         float sum = 0.0f;
         for (int i = 0; i < intervalsRR.size(); i++) {
+            intervalsRR.get(i).setHR(getHeartRate(intervalsRR.get(i).getValue()));
             sum += intervalsRR.get(i).getValue();
         }
         return sum / intervalsRR.size();

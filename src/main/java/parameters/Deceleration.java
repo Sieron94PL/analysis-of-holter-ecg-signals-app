@@ -11,6 +11,7 @@ public class Deceleration {
         return currentValue > previousValue;
     }
 
+    @SuppressWarnings("Duplicates")
     public static List<Sample> signalAveraging(List<Sample> intervalsRR) {
         float X0 = 0.0f;
         float X1 = 0.0f, X2 = 0.0f, X3 = 0.0f, X4 = 0.0f, X5 = 0.0f, X6 = 0.0f;
@@ -42,7 +43,6 @@ public class Deceleration {
             }
         }
 
-
         signalAveraging.add(new Sample(-6, X_6 / decelerations));
         signalAveraging.add(new Sample(-5, X_5 / decelerations));
         signalAveraging.add(new Sample(-4, X_4 / decelerations));
@@ -61,6 +61,7 @@ public class Deceleration {
 
     }
 
+    @SuppressWarnings("Duplicates")
     public static float deceleration(List<Sample> signalAveraging) {
         float X0 = Sample.findById(0, signalAveraging).getValue();
         float X1 = Sample.findById(1, signalAveraging).getValue();

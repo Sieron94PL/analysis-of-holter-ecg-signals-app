@@ -20,7 +20,7 @@ public class MainScene {
 
         double tickUnitAxisX = 1.0;
 
-        double lowerBoundAxisY = -0.5;
+        double lowerBoundAxisY = -1.2;
         double upperBoundAxisY = 1.2;
         double tickUnitAxisY = 0.1;
 
@@ -208,11 +208,13 @@ public class MainScene {
         for (XYChart.Data<Number, Number> d : series.getData()) {
             Sample sample = Sample.findById(Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency) - start + step, peaks);
             String info =
-                    "Peak no: " + Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency) + "\n" +
+                    "Peak no: " + (start + Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency)) + "\n" +
                             "Time: " + Math.secondsToLocalTime((int) Math.sampleToSecond(sample.getId() + start, samplingFrequency)) + "\n" +
-                            "TO: " + sample.getTO() + "\n" +
-                            "TS: " + sample.getTS() + "\n" +
-                            "Duration: " + sample.getValue() + "ms";
+                            "HR: " + java.lang.Math.round(sample.getHR()) + "bpm" + "\n" +
+                            "Duration: " + java.lang.Math.round(sample.getValue()) + "ms" + "\n" +
+                            "TO: " + String.format("%.2f", sample.getTO()) + "%\n" +
+                            "TS: " + String.format("%.2f", sample.getTS()) + "RR/ms";
+
 
             Tooltip.install(d.getNode(), new Tooltip(info));
             d.getNode().setOnMouseEntered(event -> d.getNode().getStyleClass().add("onHoverPVCs"));
@@ -224,9 +226,10 @@ public class MainScene {
         for (XYChart.Data<Number, Number> d : series.getData()) {
             Sample sample = Sample.findById(Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency) - start + step, peaks);
             String info =
-                    "Peak no: " + sample.getId() + "\n" +
+                    "Peak no: " + (start + sample.getId()) + "\n" +
                             "Time: " + Math.secondsToLocalTime((int) Math.sampleToSecond(sample.getId() + start, samplingFrequency)) + "\n" +
-                            "Duration: " + sample.getValue() + "ms" + "\n";
+                            "Duration: " + java.lang.Math.round(sample.getValue()) + "ms" + "\n" +
+                            "HR: " + java.lang.Math.round(sample.getHR()) + "bpm" + "\n";
 
             Tooltip tooltip = new Tooltip(info);
             Tooltip.install(d.getNode(), tooltip);

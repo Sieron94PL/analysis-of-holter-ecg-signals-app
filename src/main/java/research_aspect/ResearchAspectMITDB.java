@@ -14,7 +14,7 @@ import utils.ReadCardioPathSimple;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResearchAspect {
+public class ResearchAspectMITDB {
 
     private static final String INTERVALS_XLS_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-intervalsRR\\xls\\";
     private static final String INTERVALS_TXT_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-intervalsRR\\txt\\";
@@ -38,9 +38,11 @@ public class ResearchAspect {
 
         String[] filesNames = {"100", "101", "102", "103", "104", "105", "106", "107", "108", "109",
                 "111", "112", "113", "114", "115", "116", "117", "118", "119",
-                "121", "122", "123", "124", "200", "201", "202", "203", "205", "207",
-                "208", "209", "210", "212", "213", "214", "215", "217", "219", "220",
-                "221", "222", "223", "228", "230", "231", "232", "233", "234"};
+                "121", "122", "123", "124", "200",
+                "201", "202", "203", "205", "207","208", "209",
+                "210", "212", "213", "214", "215", "217", "219",
+                "220", "221", "222", "223", "228",
+                "230", "231", "232", "233", "234"};
 
         String[] csvFiles = new String[filesNames.length];
         for (int i = 0; i < filesNames.length; i++) {
@@ -72,10 +74,10 @@ public class ResearchAspect {
         }
 
         for (int i = 0; i < csvFiles.length; i++) {
-            int signalNumber = 1;
+            int signalNumber = (i == 13) ? 2 : 1;
             float[] inputSignal = ReadCardioPathSimple.loadCSV(ECG_SIGNAL_CSV_DIRECTORY + csvFiles[i], signalNumber, 0, 108000);
             QrsDetection qrsDetection = new QrsDetection(inputSignal);
-            List<Sample> peaks = qrsDetection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, 360.0f), 360.0f)), 360.0f));
+            List<Sample> peaks = qrsDetection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, 360.0f), 360.0f)), 360.0f), 360.0f);
             intervalsRRCalculatedByApplication.add(HeartRateVariability.getIntervalsRR(peaks, 360.0f));
         }
 
@@ -158,6 +160,7 @@ public class ResearchAspect {
                 allPeaks++;
                 globalAllPeaks++;
             }
+            System.out.println(filesNames[i] + " (intervalsRR size): " + intervalsRRCalculatedByApplication.get(i).size());
             System.out.println(filesNames[i] + " (peaks): " + detectedPeaks + "/" + allPeaks + " = " + (detectedPeaks * 100.0f / allPeaks * 1.0f));
         }
         System.out.println("Global detected peaks: " + globalDetectedPeaks + "/" + globalAllPeaks + " = " + (globalDetectedPeaks * 100.0f / globalAllPeaks * 1.0f));

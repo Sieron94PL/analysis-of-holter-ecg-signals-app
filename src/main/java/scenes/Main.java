@@ -2,7 +2,6 @@ package scenes;
 
 import filter_iirj.ButterworthFilter;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
@@ -56,70 +55,49 @@ public class Main extends Application {
 
     private Label fileDirectoryLabel;
 
-    private final static String CSV_DATA_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-ecgSignal\\";
+    private final static String CSV_DATA_DIRECTORY = "C:\\Users\\Damian\\Desktop\\holter-ecg\\Save002\\";
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-//
-//        int samplingFrequency = 360;
+
+
+//        int samplingFrequency = 128;
 //
 //        /*ECG Signal from .csv file.*/
-//        int start = 0;
-//        int stop = 10000;
-//        float[] inputSignal = ReadCardioPathSimple.loadCSV(CSV_DATA_DIRECTORY + "102.csv", 1, start, stop);
+//        int start = 60 * 360 * 30;
+//        int stop = 60 * 360 * 35;
+//        int channels = ReadCardioPathNumberOfChannels.load(CSV_DATA_DIRECTORY);
+//        ECGSignal ecgSignal = ReadCardioPathSimple.load(CSV_DATA_DIRECTORY + "\\crecg.dat", channels, samplingFrequency);
+//        float[] inputSignal = Arrays.copyOfRange(ecgSignal.getChannel(0), start, stop);
 //        float[] integrationSignal = Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, samplingFrequency), samplingFrequency)), samplingFrequency);
 //        float[] normalizationSignal = Normalization.normalize(integrationSignal);
 //        QrsDetection qrsDetection = new QrsDetection(inputSignal);
 //        peaks = qrsDetection.detect(inputSignal);
 //
-//        /*ECG Signal from .dat file.*/
-////        int channels = ReadCardioPathNumberOfChannels.load(ECG_DATA_DIRECTORY);
-////        ECGSignal signal = ReadCardioPathSimple.load(ECG_DATA_DIRECTORY + fileDAT, channels, samplingFrequency);
-////        float[] inputSignal = Arrays.copyOfRange(signal.getChannel(0), start, stop); //length = 9653888
-//        /*Normalization*/
-////        inputSignal = Normalization.normalize(Normalization.cancelDC(inputSignal));
-//
-//
-//        final NumberAxis xAxis = new NumberAxis(0, 10000,10);
+//        final NumberAxis xAxis = new NumberAxis(0, 60 * 360 * 1, 10);
 //        final NumberAxis yAxis = new NumberAxis();
 //
-//        final NumberAxis xAxis1 = new NumberAxis(0, 1000, 10);
-//        final NumberAxis yAxis1 = new NumberAxis();
-//
 //        final LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
-//        final LineChart<Number, Number> lineChart1 = new LineChart<Number, Number>(xAxis1, yAxis1);
-//
-//        VBox vBox = new VBox();
 //
 //        XYChart.Series inputSignalSeries = new XYChart.Series();
 //        XYChart.Series filteredSignalSeries = new XYChart.Series();
 //        XYChart.Series integratedSignalSeries = new XYChart.Series();
 //        XYChart.Series normalizationSignalSeries = new XYChart.Series();
 //
-//        for(int i = 0; i < normalizationSignal.length; i++){
-//            normalizationSignalSeries.getData().add(new XYChart.Data(i, normalizationSignal[i]));
+//        for (int i = 0; i < 10000; i++) {
+//            integratedSignalSeries.getData().add(new XYChart.Data(i, normalizationSignal[i]));
 //        }
 //
-//
-//
-//       lineChart.setCreateSymbols(false);
-//
-//        lineChart.getData().add(normalizationSignalSeries);
-//
-//
+//        lineChart.setCreateSymbols(false);
+//        lineChart.getData().add(integratedSignalSeries);
 //
 //
 //        Scene scene = new Scene(lineChart, 800, 600);
 //
-////        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
-//
-//
-//
 //        primaryStage.setScene(scene);
 //        primaryStage.setTitle("Analysis of Holter ECG signals");
 //        primaryStage.show();
-
-
+//
         MenuBar menuBar = Partials.menu();
         HBox timeRangeHBox = Partials.timeRangeHBox();
         HBox peaksRadioButtonHBox = Partials.peaksRadioButtonHBox();
@@ -129,7 +107,6 @@ public class Main extends Application {
         vbox.getChildren().addAll(menuBar);
 
         TextField samplingFrequencyTextField = (TextField) samplingFrequencyHBox.getChildren().get(1);
-
 
         /*Peaks radio button*/
         final ToggleGroup toggleGroup = new ToggleGroup();
@@ -159,16 +136,19 @@ public class Main extends Application {
         Menu menuFile = menuBar.getMenus().get(0);
         MenuItem menuItemOpen = menuFile.getItems().get(0);
         menuItemOpen.setOnAction(event -> {
+
             fileDirectory = FileHelper.getPath();
             fileExtension = FileHelper.getFileExtension(fileDirectory);
 
             if (fileExtension.equals(".dat") || fileExtension.equals(".csv")) {
+
                 if (fileExtension.equals(".dat")) {
                     file = new File(fileDirectory);
                     channels = ReadCardioPathNumberOfChannels.load(file.getParent());
                 } else if (fileExtension.equals(".csv")) {
                     channels = ReadCardioPathSimple.getRecords(fileDirectory).get(0).length - 1;
                 }
+
                 HBox channelNumberRadioButtonHBox = Partials.channelNumberRadioButtonHBox(channels);
 
                 for (int i = 1; i <= channels; i++) {
@@ -213,18 +193,17 @@ public class Main extends Application {
 
         });
 
-        /*HRT, HRV analysis*/
+        /**HRT, HRV analysis**/
         Menu analysisMenu = menuBar.getMenus().get(1);
         MenuItem parametersMenuItem = analysisMenu.getItems().get(0);
         parametersMenuItem.setOnAction(event -> {
             TextField textFieldFromTime = (TextField) timeRangeHBox.getChildren().get(1);
-            ParametersScene.show(Math.localTimeToSeconds(textFieldFromTime.getText()), SDNN, heartRate, averageTO, averageTS, DC, AC, intervalsRR, samplingFrequency);
+            ParametersScene.show(Math.secondsToSample(Math.localTimeToSeconds(textFieldFromTime.getText()), samplingFrequency), SDNN, heartRate, averageTO, averageTS, DC, AC, intervalsRR, samplingFrequency);
             HeartRateVariabilityScene.show(intervalsRR);
         });
 
+        /**Loading signal**/
         Button btnLoadSignal = (Button) timeRangeHBox.getChildren().get(4);
-
-
         btnLoadSignal.setOnAction(event -> {
 
             if (timeRangeHBox.getChildren().size() == 6) {
@@ -248,11 +227,10 @@ public class Main extends Application {
                 inputSignal = ReadCardioPathSimple.loadCSV(fileDirectory, Integer.valueOf(rb1.getText()), start, Math.secondsToSample(toTime, samplingFrequency));
             }
 
-            /**Computing parameters **/
+            /**Computing parameters**/
             QrsDetection qrsDetection = new QrsDetection(inputSignal);
-            inputSignal = Normalization.normalize(inputSignal);
-            peaks = qrsDetection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, samplingFrequency), samplingFrequency)), samplingFrequency));
-//            inputSignal = Normalization.normalize(inputSignal);
+            inputSignal = Normalization.cancelDC(inputSignal);
+            peaks = qrsDetection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, samplingFrequency), samplingFrequency)), samplingFrequency), samplingFrequency);
             intervalsRR = HeartRateVariability.getIntervalsRR(peaks, samplingFrequency);
             averageIntervalsRR = HeartRate.averageIntervalRR(intervalsRR);
             intervalsRR = PrematureVentricularContractions.detectPVCs(intervalsRR, averageIntervalsRR);
@@ -266,7 +244,6 @@ public class Main extends Application {
             List<Sample> signalAveragingDC = Deceleration.signalAveraging(intervalsRR);
             DC = Deceleration.deceleration(signalAveragingDC);
             inputSignal = Normalization.normalize(inputSignal);
-
 
             HBox selectTimeHBox = Partials.selectTimeHBox(fromTime);
 
@@ -287,37 +264,20 @@ public class Main extends Application {
             btnPrevious.setDisable(true);
 
             btnPrevious.setOnAction(event2 -> {
-
-                Platform.runLater(() -> {
-                    counter--;
-                    updateBtnPrevious(btnPrevious, counter);
-                    step = counter * oneMinuteToSample;
-                    timeSelectFromTime = Math.localTimeToSeconds(labelSelectTime.getText().substring(0, 8)) - 60;
-                    timeSelectToTime = Math.localTimeToSeconds(labelSelectTime.getText().substring(11, 19)) - 60;
-                    labelSelectTime.setText(Math.secondsToLocalTime(timeSelectFromTime) + " - " + Math.secondsToLocalTime(timeSelectToTime));
-                    start = Math.secondsToSample(timeSelectFromTime, samplingFrequency);
-                    if (oneMinuteToSample > inputSignal.length - step) {
-                        stop = start + inputSignal.length - step;
-                    } else {
-                        stop = start + oneMinuteToSample;
-                    }
-                    lineCharts = MainScene.showInputSignal(start, stop, samplingFrequency, inputSignal, step);
-                    RadioButton rb = (RadioButton) toggleGroup.getSelectedToggle();
-                    if (rb != null) {
-                        if (rb.getText().equals("Enable peaks")) {
-                            lineCharts = MainScene.showPeaks(start, step, samplingFrequency, inputSignal, true, intervalsRR, lineCharts);
-                        } else {
-                            lineCharts = MainScene.showPeaks(start, step, samplingFrequency, inputSignal, false, intervalsRR, lineCharts);
-                        }
-                    }
-                });
-
-
-                updateLineCharts(lineCharts, vbox);
-
+                counter--;
+                updateBtnPrevious(btnPrevious, counter);
+                step = counter * oneMinuteToSample;
+                timeSelectFromTime = Math.localTimeToSeconds(labelSelectTime.getText().substring(0, 8)) - 60;
+                timeSelectToTime = Math.localTimeToSeconds(labelSelectTime.getText().substring(11, 19)) - 60;
+                labelSelectTime.setText(Math.secondsToLocalTime(timeSelectFromTime) + " - " + Math.secondsToLocalTime(timeSelectToTime));
+                start = Math.secondsToSample(timeSelectFromTime, samplingFrequency);
+                if (oneMinuteToSample > inputSignal.length - step) {
+                    stop = start + inputSignal.length - step;
+                } else {
+                    stop = start + oneMinuteToSample;
+                }
                 lineCharts = MainScene.showInputSignal(start, stop, samplingFrequency, inputSignal, step);
                 RadioButton rb = (RadioButton) toggleGroup.getSelectedToggle();
-
                 if (rb != null) {
                     if (rb.getText().equals("Enable peaks")) {
                         lineCharts = MainScene.showPeaks(start, step, samplingFrequency, inputSignal, true, intervalsRR, lineCharts);
@@ -327,6 +287,8 @@ public class Main extends Application {
                 }
 
                 updateLineCharts(lineCharts, vbox);
+
+                lineCharts = MainScene.showInputSignal(start, stop, samplingFrequency, inputSignal, step);
             });
 
             Button btnNext = (Button) selectTimeHBox.getChildren().get(2);

@@ -71,13 +71,10 @@ public class HeartRateVariabilityScene {
         int i = 0;
         for (XYChart.Data<Number, Number> d : intervalsRRSeries.getData()) {
             i++;
-
             String info = "Beat no.: " + i;
             info += "\nDuration: " + d.getYValue() + "ms";
-
             Tooltip tooltip = new Tooltip(info);
             Tooltip.install(d.getNode(), tooltip);
-
             d.getNode().setOnMouseEntered(event -> d.getNode().getStyleClass().add("onHoverBeat"));
             d.getNode().setOnMouseExited(event -> d.getNode().getStyleClass().remove("onHoverBeat"));
         }
@@ -88,10 +85,7 @@ public class HeartRateVariabilityScene {
         LineChart lineChartHeartRateVariability = lineChartHeartRateVariability(intervalsRRSeries);
         lineChartHeartRateVariability.setLegendVisible(false);
         lineChartHeartRateVariability.setCreateSymbols(true);
-
-        if (!lineChartHeartRateVariability.getCreateSymbols()) {
-            addTooltipIntervalsRR(intervalsRRSeries);
-        }
+        addTooltipIntervalsRR(intervalsRRSeries);
 
         HBox hBox = new HBox();
         hBox.setHgrow(lineChartHeartRateVariability, Priority.ALWAYS);

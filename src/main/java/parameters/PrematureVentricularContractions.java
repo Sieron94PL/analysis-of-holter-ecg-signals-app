@@ -1,6 +1,7 @@
 package parameters;
 
 import model.Sample;
+import utils.Math;
 
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class PrematureVentricularContractions {
 
     public static List<Sample> detectPVCs(List<Sample> intervalsRR, float averageIntervalRR) {
         for (int i = 1; i < intervalsRR.size(); i++) {
-            if (prematurity(intervalsRR.get(i - 1).getValue(), averageIntervalRR) > 0.1f &&
-                    compensatoryPause(intervalsRR.get(i).getValue(), averageIntervalRR) > 0.1f) {
+            if (prematurity(intervalsRR.get(i - 1).getValue(), averageIntervalRR) > Math.THRESHOLD_PVC_DETECTION &&
+                    compensatoryPause(intervalsRR.get(i).getValue(), averageIntervalRR) > Math.THRESHOLD_PVC_DETECTION) {
                 intervalsRR.get(i).setPVC(true);
             }
         }

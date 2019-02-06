@@ -37,9 +37,9 @@ public class ParametersScene {
         parametersNamesVBox.setStyle("-fx-font-weight: bold;");
 
         Label SDNNValue = new Label(String.format("%.2f", SDNN));
-        Label HRValue = new Label(String.format("%.2f", HR));
-        Label TOValue = new Label(String.format("%.2f", TO));
-        Label TSValue = new Label(String.format("%.2f", TS));
+        Label HRValue = new Label(String.valueOf(java.lang.Math.round(HR)) + " bpm");
+        Label TOValue = new Label(String.format("%.2f", TO) + "%");
+        Label TSValue = new Label(String.format("%.2f", TS) + " RR/ms");
         Label DCValue = new Label(String.format("%.2f", DC));
         Label ACValue = new Label(String.format("%.2f", AC));
 
@@ -74,7 +74,7 @@ public class ParametersScene {
         List<Sample> PVCs = PrematureVentricularContractions.detectPVCs(intervalsRR, samplingFrequency);
         for (int i = 0; i < PVCs.size(); i++) {
             int sampleNo = PVCs.get(i).getId() + start;
-            String time = String.valueOf(Math.secondsToLocalTime((int) Math.sampleToSecond(sampleNo, samplingFrequency)));
+            String time = String.valueOf(Math.secondsToLocalTime((int) Math.sampleToSecond(sampleNo + start, samplingFrequency)));
             float duration = PVCs.get(i).getValue();
             boolean isPVC = PVCs.get(i).isPVC();
             heartRateVariabilityData.add(new HeartRateVariabilityData(i + 1, sampleNo, time, duration, isPVC));

@@ -10,7 +10,7 @@ public class Normalization {
         float[] output = new float[input.length];
         for (int i = 0; i < input.length; i++) {
             int start = i;
-            int stop = start + (int) (samplingFrequency * 4.0f);
+            int stop = start + (int) (samplingFrequency * 5.0f);
             float max = Math.max(Arrays.copyOfRange(input, start, stop));
             float min = Math.min(Arrays.copyOfRange(input, start, stop));
             stop = (stop > input.length - 1) ? input.length - 1 : stop;
@@ -35,6 +35,7 @@ public class Normalization {
     public static float[] cancelDC(float[] input) {
         float[] output = new float[input.length];
         float mean = Math.mean(input);
+
         for (int i = 0; i < input.length; i++) {
             output[i] = input[i] - mean;
         }

@@ -19,7 +19,7 @@ public class HeartRateVariability {
             firstPeak = peaks.get(i - 1).getId();
             secondPeak = peaks.get(i).getId();
             float intervalRR = intervalRR(firstPeak, secondPeak, samplingFrequency);
-            if (intervalRR < 2000.0f) {
+            if (intervalRR < 2000.0f && intervalRR > 300.0f) {
                 intervalsRR.add(new Sample(firstPeak, intervalRR(firstPeak, secondPeak, samplingFrequency)));
             }
         }

@@ -14,7 +14,7 @@ public class ButterworthFilter {
             output[i] = (float) butterworth.filter(input[i]);
         }
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < samplingFrequency / 2; i++) {
             output[i] = 0;
         }
         return output;
