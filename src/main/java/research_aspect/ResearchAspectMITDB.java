@@ -5,10 +5,7 @@ import model.Sample;
 import parameters.HeartRate;
 import parameters.HeartRateVariability;
 import parameters.PrematureVentricularContractions;
-import qrs.Derivative;
-import qrs.Integration;
-import qrs.QrsDetection;
-import qrs.Squaring;
+import qrs.*;
 import utils.ReadCardioPathSimple;
 
 import java.util.ArrayList;
@@ -19,14 +16,16 @@ public class ResearchAspectMITDB {
     private static final String INTERVALS_XLS_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-intervalsRR\\xls\\";
     private static final String INTERVALS_TXT_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-intervalsRR\\txt\\";
     private static final String ECG_SIGNAL_CSV_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-ecgSignal\\";
+    private static final float SAMPLING_FREQUENCY = 360.0f;
+    private static final int ECG_SIGNAL_LENGTH = 108000;
 
 
-    public static boolean isFoundIdInIntervalsRRCalculatedByApplication(List<Sample> intervalsRR, int id) {
+    public static int isDetectedPeak(List<Sample> intervalsRR, int id) {
         for (int i = 0; i < intervalsRR.size(); i++) {
-            if ((intervalsRR.get(i).getId() - id <= 5 && intervalsRR.get(i).getId() - id >= 0) || (id - intervalsRR.get(i).getId() <= 5 && id - intervalsRR.get(i).getId() >= 0))
-                return true;
+            if ((Math.abs(intervalsRR.get(i).getId() - id) <= 5 && Math.abs(intervalsRR.get(i).getId() - id) >= 0))
+                return Math.abs(intervalsRR.get(i).getId() - id);
         }
-        return false;
+        return -1;
     }
 
     public static void main(String[] args) throws Exception {
@@ -39,7 +38,7 @@ public class ResearchAspectMITDB {
         String[] filesNames = {"100", "101", "102", "103", "104", "105", "106", "107", "108", "109",
                 "111", "112", "113", "114", "115", "116", "117", "118", "119",
                 "121", "122", "123", "124", "200",
-                "201", "202", "203", "205", "207","208", "209",
+                "201", "202", "203", "205", "207", "208", "209",
                 "210", "212", "213", "214", "215", "217", "219",
                 "220", "221", "222", "223", "228",
                 "230", "231", "232", "233", "234"};
@@ -75,10 +74,15 @@ public class ResearchAspectMITDB {
 
         for (int i = 0; i < csvFiles.length; i++) {
             int signalNumber = (i == 13) ? 2 : 1;
-            float[] inputSignal = ReadCardioPathSimple.loadCSV(ECG_SIGNAL_CSV_DIRECTORY + csvFiles[i], signalNumber, 0, 108000);
+            float[] inputSignal = ReadCardioPathSimple.loadCSV(ECG_SIGNAL_CSV_DIRECTORY + csvFiles[i], signalNumber, 0, ECG_SIGNAL_LENGTH);
+            inputSignal = Normalization.cancelDC(inputSignal);
             QrsDetection qrsDetection = new QrsDetection(inputSignal);
-            List<Sample> peaks = qrsDetection.detect(Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, 360.0f), 360.0f)), 360.0f), 360.0f);
-            intervalsRRCalculatedByApplication.add(HeartRateVariability.getIntervalsRR(peaks, 360.0f));
+            List<Sample> peaks = qrsDetection.detect(Integration.integration
+                    (Squaring.squaring(
+                            Derivative.derivative(
+                                    ButterworthFilter.filter(inputSignal, SAMPLING_FREQUENCY), SAMPLING_FREQUENCY)), SAMPLING_FREQUENCY), SAMPLING_FREQUENCY);
+            intervalsRRCalculatedByApplication.add(HeartRateVariability.getIntervalsRR(peaks, SAMPLING_FREQUENCY));
+            System.out.println(csvFiles[i]);
         }
 
         System.out.println("Data number: " + csvFiles.length);
@@ -149,17 +153,22 @@ public class ResearchAspectMITDB {
         for (int i = 0; i < intervalsRRWithPVCs.size(); i++) {
             int allPeaks = 0;
             int detectedPeaks = 0;
+            int sumErrors = 0;
+            float errorDistance;
             for (int j = 0; j < intervalsRRWithPVCs.get(i).size(); j++) {
-                if (intervalsRRWithPVCs.get(i).get(j).getId() > 108000) {
+                if (intervalsRRWithPVCs.get(i).get(j).getId() > ECG_SIGNAL_LENGTH) {
                     break;
                 }
-                if (isFoundIdInIntervalsRRCalculatedByApplication(intervalsRRCalculatedByApplication.get(i), intervalsRRWithPVCs.get(i).get(j).getId())) {
+                if (isDetectedPeak(intervalsRRCalculatedByApplication.get(i), intervalsRRWithPVCs.get(i).get(j).getId()) != -1) {
+                    sumErrors += isDetectedPeak(intervalsRRCalculatedByApplication.get(i), intervalsRRWithPVCs.get(i).get(j).getId());
                     detectedPeaks++;
                     globalDetectedPeaks++;
                 }
                 allPeaks++;
                 globalAllPeaks++;
             }
+            errorDistance = (sumErrors * 1.0f) / (detectedPeaks * 1.0f);
+            System.out.println(filesNames[i] + "(error distance): " + errorDistance + " (" + errorDistance * utils.Math.samplingPeriod(SAMPLING_FREQUENCY) + ")");
             System.out.println(filesNames[i] + " (intervalsRR size): " + intervalsRRCalculatedByApplication.get(i).size());
             System.out.println(filesNames[i] + " (peaks): " + detectedPeaks + "/" + allPeaks + " = " + (detectedPeaks * 100.0f / allPeaks * 1.0f));
         }
