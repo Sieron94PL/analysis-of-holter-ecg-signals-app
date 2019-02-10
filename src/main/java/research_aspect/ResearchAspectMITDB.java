@@ -17,7 +17,7 @@ public class ResearchAspectMITDB {
     private static final String INTERVALS_TXT_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-intervalsRR\\txt\\";
     private static final String ECG_SIGNAL_CSV_DIRECTORY = "C:\\Users\\Damian\\Desktop\\mitdb\\mitdb-ecgSignal\\";
     private static final float SAMPLING_FREQUENCY = 360.0f;
-    private static final int ECG_SIGNAL_LENGTH = 108000;
+    private static final int ECG_SIGNAL_LENGTH = 649999;
 
 
     public static int isDetectedPeak(List<Sample> intervalsRR, int id) {
@@ -87,65 +87,58 @@ public class ResearchAspectMITDB {
 
         System.out.println("Data number: " + csvFiles.length);
 
-        int globalAllPVCs = 0;
-        int globalDetectedPVCs = 0;
-        for (int i = 0; i < intervalsRRWithPVCs.size(); i++) {
-            int allPVCs = 0;
-            int detectedPVCs = 0;
-            for (int j = 0; j < intervalsRRWithPVCs.get(i).size(); j++) {
-                if (intervalsRRWithPVCs.get(i).get(j).isPVC()) {
-                    if (intervalsRRWithoutPVCs.get(i).get(j).isPVC()) {
-                        globalDetectedPVCs++;
-                        detectedPVCs++;
-                    }
-                    globalAllPVCs++;
-                    allPVCs++;
-                }
-            }
-            System.out.println(filesNames[i] + " (PVCs): " + detectedPVCs + "/" + allPVCs + " = " + (detectedPVCs * 100.0f / allPVCs * 1.0f));
-        }
-        System.out.println("Global detected PVCs: " + globalDetectedPVCs + "/" + globalAllPVCs + " = " + (globalDetectedPVCs * 100.0f / globalAllPVCs * 1.0f));
+//        int TP = 0;
+//        int FP = 0;
+//        int FN = 0;
+//        int TN = 0;
+//
+//        for (int i = 0; i < intervalsRRWithPVCs.size(); i++) {
+//            int localTP = 0;
+//            int localFP = 0;
+//            int localFN = 0;
+//            int localTN = 0;
+//            for (int j = 0; j < intervalsRRWithPVCs.get(i).size(); j++) {
+//                if (intervalsRRWithPVCs.get(i).get(j).isPVC()) {
+//                    if (intervalsRRWithoutPVCs.get(i).get(j).isPVC()) {
+//                        TP++;
+//                        localTP++;
+//                    } else {
+//                        FN++;
+//                        localFN++;
+//                    }
+//                } else {
+//                    if (intervalsRRWithoutPVCs.get(i).get(j).isPVC()) {
+//                        FP++;
+//                        localFP++;
+//                    } else {
+//                        TN++;
+//                        localTN++;
+//                    }
+//                }
+//            }
+//            System.out.println(filesNames[i] + " TP: " + localTP + ", FN: " + localFN + ", FP: " + localFP + ", TN: " + localTN);
+//        }
+//
+//        System.out.println("TP: " + TP);
+//        System.out.println("FN: " + FN);
+//        System.out.println("FP: " + FP);
+//        System.out.println("TN: " + TN);
+//
+//        float TPR = (TP * 1.0f) / ((TP + FN) * 1.0f);
+//        System.out.println("TPR: " + TPR);
+//
+//        float TNR = (TN * 1.0f) / ((FP + TN) * 1.0f);
+//        System.out.println("TNR: " + TNR);
+//
+//        float PPV = (TP * 1.0f) / ((TP + FP) * 1.0f);
+//        System.out.println("PPV: " + PPV);
+//
+//        float ACC = ((TP + TN) * 1.0f) / ((TP + TN + FP + FN) * 1.0f);
+//        System.out.println("ACC: " + ACC);
+
 
         int TP = 0;
-        int FP = 0;
         int FN = 0;
-        int TN = 0;
-
-        for (int i = 0; i < intervalsRRWithPVCs.size(); i++) {
-            for (int j = 0; j < intervalsRRWithPVCs.get(i).size(); j++) {
-                if (intervalsRRWithPVCs.get(i).get(j).isPVC()) {
-                    if (intervalsRRWithoutPVCs.get(i).get(j).isPVC()) {
-                        TP++;
-                    } else {
-                        FN++;
-                    }
-                } else {
-                    if (intervalsRRWithoutPVCs.get(i).get(j).isPVC()) {
-                        FP++;
-                    } else {
-                        TN++;
-                    }
-                }
-            }
-        }
-
-        System.out.println("TP: " + TP);
-        System.out.println("FN: " + FN);
-        System.out.println("FP: " + FP);
-        System.out.println("TN: " + TN);
-
-        float TPR = (TP * 1.0f) / ((TP + FN) * 1.0f);
-        System.out.println("TPR: " + TPR);
-
-        float TNR = (TN * 1.0f) / ((FP + TN) * 1.0f);
-        System.out.println("TNR: " + TNR);
-
-        float PPV = (TP * 1.0f) / ((TP + FP) * 1.0f);
-        System.out.println("PPV: " + PPV);
-
-        float ACC = ((TP + TN) * 1.0f) / ((TP + TN + FP + FN) * 1.0f);
-        System.out.println("ACC: " + ACC);
-
 
         int globalAllPeaks = 0;
         int globalDetectedPeaks = 0;
@@ -155,6 +148,8 @@ public class ResearchAspectMITDB {
             int detectedPeaks = 0;
             int sumErrors = 0;
             float errorDistance;
+            int localTP = 0;
+            int localFN = 0;
             for (int j = 0; j < intervalsRRWithPVCs.get(i).size(); j++) {
                 if (intervalsRRWithPVCs.get(i).get(j).getId() > ECG_SIGNAL_LENGTH) {
                     break;
@@ -163,16 +158,28 @@ public class ResearchAspectMITDB {
                     sumErrors += isDetectedPeak(intervalsRRCalculatedByApplication.get(i), intervalsRRWithPVCs.get(i).get(j).getId());
                     detectedPeaks++;
                     globalDetectedPeaks++;
+                    TP++;
+                    localTP++;
+
+                } else {
+                    FN++;
+                    localFN++;
+
                 }
                 allPeaks++;
                 globalAllPeaks++;
             }
+
+            System.out.println(filesNames[i] + ":");
             errorDistance = (sumErrors * 1.0f) / (detectedPeaks * 1.0f);
-            System.out.println(filesNames[i] + "(error distance): " + errorDistance + " (" + errorDistance * utils.Math.samplingPeriod(SAMPLING_FREQUENCY) + ")");
-            System.out.println(filesNames[i] + " (intervalsRR size): " + intervalsRRCalculatedByApplication.get(i).size());
-            System.out.println(filesNames[i] + " (peaks): " + detectedPeaks + "/" + allPeaks + " = " + (detectedPeaks * 100.0f / allPeaks * 1.0f));
+            System.out.println("Error distance: " + errorDistance + " (" + errorDistance * utils.Math.samplingPeriod(SAMPLING_FREQUENCY) + ")");
+            System.out.println("Number intervalsRR: " + intervalsRRWithPVCs.get(i).size());
+            System.out.println("Number intervalsRR detected by application: " + intervalsRRCalculatedByApplication.get(i).size());
+            System.out.println("Peaks: " + detectedPeaks + "/" + allPeaks + " = " + (detectedPeaks * 100.0f / allPeaks * 1.0f));
+            int localFP = intervalsRRWithPVCs.get(i).size() - intervalsRRCalculatedByApplication.get(i).size();
+            System.out.println("TP: " + localTP + ", FN: " + localFN + ", FP: " + localFP);
         }
         System.out.println("Global detected peaks: " + globalDetectedPeaks + "/" + globalAllPeaks + " = " + (globalDetectedPeaks * 100.0f / globalAllPeaks * 1.0f));
-
+        System.out.println("TP: " + TP + ", FN: " + FN);
     }
 }

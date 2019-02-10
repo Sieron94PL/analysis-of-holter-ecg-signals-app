@@ -15,19 +15,19 @@ public class QrsDetection {
         this.ecgSignal = ecgSignal;
     }
 
-    private static boolean isQRS(float[] input) {
+    private static boolean isQRS(float[] input, float thresholdValue) {
         for (int i = 0; i < 5; i++) {
-            if (input[i] > Math.THRESHOLD_QRS_DETECTION)
+            if (input[i] > thresholdValue)
                 return false;
         }
-        for (int i = 5; i < 5; i++) {
-            if (input[i] < Math.THRESHOLD_QRS_DETECTION)
+        for (int i = 5; i < 10; i++) {
+            if (input[i] < thresholdValue)
                 return false;
         }
         return true;
     }
 
-    private Sample getPeak(List<Sample> samples) {
+    private Sample findPeak(List<Sample> samples) {
         float max = samples.get(0).getValue();
         int id = samples.get(0).getId();
         for (int i = 1; i < samples.size(); i++) {
@@ -46,7 +46,7 @@ public class QrsDetection {
     }
 
     public float thresholdValue(float[] input, int start, int stop) {
-        return 0.1f * Math.max(Arrays.copyOfRange(input, start, stop));
+        return 0.2f * Math.max(Arrays.copyOfRange(input, start, stop));
     }
 
     public List<Sample> detect(float[] input, float samplingFrequency) {
@@ -60,17 +60,21 @@ public class QrsDetection {
 
         for (int i = 5; i < input.length - 5; i++) {
             if (input[i] > thresholdValue) {
-                if (isQRS(Arrays.copyOfRange(input, i - 5, i + 5))) {
+                if (isQRS(Arrays.copyOfRange(input, i - 5, i + 5), thresholdValue)) {
+
                     while (input[i] / Math.max(input) > thresholdValue && i < input.length - 1) {
                         temp.add(new Sample(i, input[i] / Math.max(input)));
                         i++;
                     }
-                    peaks.add(getPeak(temp));
+                    peaks.add(findPeak(temp));
                     temp.clear();
+
                     if (i > stop) {
                         stop = i + java.lang.Math.round(5.0f * samplingFrequency);
                         stop = (input.length - 1 > stop) ? stop : input.length - 1;
-                        thresholdValue = thresholdValue(input, i, stop);
+                        if (stop - i > 0) {
+                            thresholdValue = thresholdValue(input, i, stop);
+                        }
                     }
                 }
             }

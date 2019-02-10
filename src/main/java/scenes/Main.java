@@ -6,8 +6,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -55,49 +53,8 @@ public class Main extends Application {
 
     private Label fileDirectoryLabel;
 
-    private final static String CSV_DATA_DIRECTORY = "C:\\Users\\Damian\\Desktop\\holter-ecg\\Save002\\";
-
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-
-//        int samplingFrequency = 128;
-//
-//        /*ECG Signal from .csv file.*/
-//        int start = 60 * 360 * 30;
-//        int stop = 60 * 360 * 35;
-//        int channels = ReadCardioPathNumberOfChannels.load(CSV_DATA_DIRECTORY);
-//        ECGSignal ecgSignal = ReadCardioPathSimple.load(CSV_DATA_DIRECTORY + "\\crecg.dat", channels, samplingFrequency);
-//        float[] inputSignal = Arrays.copyOfRange(ecgSignal.getChannel(0), start, stop);
-//        float[] integrationSignal = Integration.integration(Squaring.squaring(Derivative.derivative(ButterworthFilter.filter(inputSignal, samplingFrequency), samplingFrequency)), samplingFrequency);
-//        float[] normalizationSignal = Normalization.normalize(integrationSignal);
-//        QrsDetection qrsDetection = new QrsDetection(inputSignal);
-//        peaks = qrsDetection.detect(inputSignal);
-//
-//        final NumberAxis xAxis = new NumberAxis(0, 60 * 360 * 1, 10);
-//        final NumberAxis yAxis = new NumberAxis();
-//
-//        final LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
-//
-//        XYChart.Series inputSignalSeries = new XYChart.Series();
-//        XYChart.Series filteredSignalSeries = new XYChart.Series();
-//        XYChart.Series integratedSignalSeries = new XYChart.Series();
-//        XYChart.Series normalizationSignalSeries = new XYChart.Series();
-//
-//        for (int i = 0; i < 10000; i++) {
-//            integratedSignalSeries.getData().add(new XYChart.Data(i, normalizationSignal[i]));
-//        }
-//
-//        lineChart.setCreateSymbols(false);
-//        lineChart.getData().add(integratedSignalSeries);
-//
-//
-//        Scene scene = new Scene(lineChart, 800, 600);
-//
-//        primaryStage.setScene(scene);
-//        primaryStage.setTitle("Analysis of Holter ECG signals");
-//        primaryStage.show();
-//
         MenuBar menuBar = Partials.menu();
         HBox timeRangeHBox = Partials.timeRangeHBox();
         HBox peaksRadioButtonHBox = Partials.peaksRadioButtonHBox();
@@ -198,7 +155,7 @@ public class Main extends Application {
         MenuItem parametersMenuItem = analysisMenu.getItems().get(0);
         parametersMenuItem.setOnAction(event -> {
             TextField textFieldFromTime = (TextField) timeRangeHBox.getChildren().get(1);
-            ParametersScene.show(Math.secondsToSample(Math.localTimeToSeconds(textFieldFromTime.getText()), samplingFrequency), SDNN, heartRate, averageTO, averageTS, DC, AC, intervalsRR, samplingFrequency);
+            ParametersScene.show(start, SDNN, heartRate, averageTO, averageTS, DC, AC, intervalsRR, samplingFrequency);
             HeartRateVariabilityScene.show(intervalsRR);
         });
 
@@ -239,10 +196,8 @@ public class Main extends Application {
             SDNN = HeartRateVariability.SDNN(intervalsRR, averageIntervalsRR);
             averageTO = HeartRateTurbulence.averageTO(intervalsRR);
             averageTS = HeartRateTurbulence.averageTS(intervalsRR);
-            List<Sample> signalAveragingAC = Acceleration.signalAveraging(intervalsRR);
-            AC = Acceleration.acceleration(signalAveragingAC);
-            List<Sample> signalAveragingDC = Deceleration.signalAveraging(intervalsRR);
-            DC = Deceleration.deceleration(signalAveragingDC);
+            AC = Acceleration.acceleration(Acceleration.signalAveraging(intervalsRR));
+            DC = Deceleration.deceleration(Deceleration.signalAveraging(intervalsRR));
             inputSignal = Normalization.normalize(inputSignal);
 
             HBox selectTimeHBox = Partials.selectTimeHBox(fromTime);
