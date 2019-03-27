@@ -178,10 +178,10 @@ public class MainScene {
                 inputSignalLineCharts.get(3).getData().add(fourthLineChartPeakSeries);
                 inputSignalLineCharts.get(3).getData().add(fourthLineChartPVCsSeries);
 
-                addTooltipPVCs(firstLineChartPVCsSeries, samplingFrequency, peaks, start, step);
-                addTooltipPVCs(secondLineChartPVCsSeries, samplingFrequency, peaks, start, step);
-                addTooltipPVCs(thirdLineChartPVCsSeries, samplingFrequency, peaks, start, step);
-                addTooltipPVCs(fourthLineChartPVCsSeries, samplingFrequency, peaks, start, step);
+                addPVCsTooltips(firstLineChartPVCsSeries, samplingFrequency, peaks, start, step);
+                addPVCsTooltips(secondLineChartPVCsSeries, samplingFrequency, peaks, start, step);
+                addPVCsTooltips(thirdLineChartPVCsSeries, samplingFrequency, peaks, start, step);
+                addPVCsTooltips(fourthLineChartPVCsSeries, samplingFrequency, peaks, start, step);
 
                 addPeaksTooltips(firstLineChartPeakSeries, samplingFrequency, peaks, start, step);
                 addPeaksTooltips(secondLineChartPeakSeries, samplingFrequency, peaks, start, step);
@@ -204,7 +204,7 @@ public class MainScene {
         return inputSignalLineCharts;
     }
 
-    private static void addTooltipPVCs(XYChart.Series<Number, Number> series, float samplingFrequency, List<Sample> peaks, int start, int step) {
+    private static void addPVCsTooltips(XYChart.Series<Number, Number> series, float samplingFrequency, List<Sample> peaks, int start, int step) {
         for (XYChart.Data<Number, Number> d : series.getData()) {
             Sample sample = Sample.findById(Math.secondsToSample(d.getXValue().floatValue(), samplingFrequency) - start + step, peaks);
             String info =

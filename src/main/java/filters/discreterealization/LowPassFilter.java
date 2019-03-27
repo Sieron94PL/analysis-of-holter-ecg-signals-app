@@ -1,4 +1,4 @@
-package filter_discrete_realization;
+package filters.discreterealization;
 
 public class LowPassFilter {
 

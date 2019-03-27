@@ -1,4 +1,4 @@
-package research_aspect;
+package researchaspect;
 
 import model.Sample;
 import org.apache.poi.ss.usermodel.*;

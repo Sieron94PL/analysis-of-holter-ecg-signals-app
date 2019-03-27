@@ -15,6 +15,8 @@ public class Validator {
             return true;
         } catch (DateTimeParseException e) {
             return false;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

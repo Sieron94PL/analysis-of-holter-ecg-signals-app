@@ -1,6 +1,6 @@
-package research_aspect;
+package researchaspect;
 
-import filter_iirj.ButterworthFilter;
+import filters.iirj.ButterworthFilter;
 import model.Sample;
 import parameters.HeartRate;
 import parameters.HeartRateTurbulence;

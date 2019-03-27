@@ -1,6 +1,6 @@
 package scenes;
 
-import filter_iirj.ButterworthFilter;
+import filters.iirj.ButterworthFilter;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +17,7 @@ import qrs.*;
 import utils.*;
 import utils.Math;
 
+import javax.xml.soap.Text;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -55,13 +56,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         MenuBar menuBar = Partials.menu();
         HBox timeRangeHBox = Partials.timeRangeHBox();
         HBox peaksRadioButtonHBox = Partials.peaksRadioButtonHBox();
         HBox samplingFrequencyHBox = Partials.samplingFrequencyHBox();
 
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(menuBar);
+        vbox.getChildren().add(menuBar);
 
         TextField samplingFrequencyTextField = (TextField) samplingFrequencyHBox.getChildren().get(1);
 
@@ -92,61 +94,80 @@ public class Main extends Application {
         /*Opening file*/
         Menu menuFile = menuBar.getMenus().get(0);
         MenuItem menuItemOpen = menuFile.getItems().get(0);
+
+        Menu menuAnalysis = menuBar.getMenus().get(1);
+        menuAnalysis.setDisable(true);
+
         menuItemOpen.setOnAction(event -> {
+
+            vbox.getChildren().clear();
+            vbox.getChildren().add(menuBar);
+            menuAnalysis.setDisable(true);
+            samplingFrequencyHBox.setDisable(false);
+            samplingFrequencyHBox.getChildren().filtered(node -> node instanceof TextField).forEach(node -> ((TextField) node).setText(""));
+            timeRangeHBox.getChildren().filtered(node -> node instanceof TextField).forEach(node -> ((TextField) node).setText(""));
+
+            //TODO Odznaczanie checkbox'a bez wyzwalania event'u
 
             fileDirectory = FileHelper.getPath();
             fileExtension = FileHelper.getFileExtension(fileDirectory);
 
-            if (fileExtension.equals(".dat") || fileExtension.equals(".csv")) {
-
-                if (fileExtension.equals(".dat")) {
-                    file = new File(fileDirectory);
-                    channels = ReadCardioPathNumberOfChannels.load(file.getParent());
-                } else if (fileExtension.equals(".csv")) {
-                    channels = ReadCardioPathSimple.getRecords(fileDirectory).get(0).length - 1;
-                }
-
-                HBox channelNumberRadioButtonHBox = Partials.channelNumberRadioButtonHBox(channels);
-
-                for (int i = 1; i <= channels; i++) {
-                    RadioButton rb = (RadioButton) channelNumberRadioButtonHBox.getChildren().get(i);
-                    rb.setToggleGroup(toggleGroup1);
-                    if (i == 1)
-                        rb.setSelected(true);
-                }
-
-                CheckBox checkBox = (CheckBox) samplingFrequencyHBox.getChildren().get(2);
-                checkBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                        if (!Validator.isNumber(samplingFrequencyTextField.getText())) {
-                            if (samplingFrequencyHBox.getChildren().size() == 4) {
-                                samplingFrequencyHBox.getChildren().remove(3);
-                            }
-                            samplingFrequencyHBox.getChildren().add(errorMessageLabel("Sampling frequency must be a number."));
-                        } else {
-                            checkBox.setDisable(true);
-                            samplingFrequencyHBox.setDisable(true);
-                            channelNumberRadioButtonHBox.setDisable(true);
-                            fileDirectoryLabel.setDisable(true);
-                            timeRangeHBox.setDisable(false);
-                            samplingFrequency = Float.parseFloat(samplingFrequencyTextField.getText());
-                            Partials.updateFileDirectoryLabel(fileDirectory, fileDirectoryLabel, samplingFrequency, channels);
-                        }
-
-                    }
-                });
-
-                timeRangeHBox.setDisable(true);
-                fileDirectoryLabel = Partials.fileDirectoryLabel(fileDirectory);
-
-                vbox.getChildren().addAll(
-                        fileDirectoryLabel,
-                        channelNumberRadioButtonHBox,
-                        samplingFrequencyHBox,
-                        timeRangeHBox);
+            //TODO Walidacja zawartości plików dat/csv
+            if (!(fileExtension.equals(".dat") || fileExtension.equals(".csv"))) {
+                getErrorAlert().showAndWait();
+                return;
             }
 
+            if (fileExtension.equals(".dat")) {
+                file = new File(fileDirectory);
+                channels = ReadCardioPathNumberOfChannels.load(file.getParent());
+            } else if (fileExtension.equals(".csv")) {
+                channels = ReadCardioPathSimple.getRecords(fileDirectory).get(0).length - 1;
+            }
+
+            HBox channelNumberRadioButtonHBox = Partials.channelNumberRadioButtonHBox(channels);
+
+            for (int i = 1; i <= channels; i++) {
+                RadioButton rb = (RadioButton) channelNumberRadioButtonHBox.getChildren().get(i);
+                rb.setToggleGroup(toggleGroup1);
+                if (i == 1)
+                    rb.setSelected(true);
+            }
+
+            CheckBox checkBox = (CheckBox) samplingFrequencyHBox.getChildren().get(2);
+            checkBox.setDisable(false);
+            checkBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+                @Override
+                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                    samplingFrequencyHBox.getChildren().remove(samplingFrequencyHBox.lookup("#error-label"));
+                    if (!Validator.isNumber(samplingFrequencyTextField.getText())) {
+                        if (samplingFrequencyHBox.getChildren().size() == 4) {
+                            samplingFrequencyHBox.getChildren().remove(3);
+                        }
+                        samplingFrequencyHBox.getChildren().add(errorMessageLabel("Sampling frequency must be a number."));
+                        checkBox.setSelected(false);
+                    } else {
+                        checkBox.setDisable(true);
+                        checkBox.setSelected(true);
+                        samplingFrequencyHBox.setDisable(true);
+                        channelNumberRadioButtonHBox.setDisable(true);
+                        fileDirectoryLabel.setDisable(true);
+                        timeRangeHBox.setDisable(false);
+                        samplingFrequency = Float.parseFloat(samplingFrequencyTextField.getText());
+                        Partials.updateFileDirectoryLabel(fileDirectory, fileDirectoryLabel, samplingFrequency, channels);
+                    }
+
+                }
+            });
+
+            timeRangeHBox.setDisable(true);
+            fileDirectoryLabel = Partials.fileDirectoryLabel(fileDirectory);
+
+            vbox.getChildren().addAll(
+                    fileDirectoryLabel,
+                    channelNumberRadioButtonHBox,
+                    samplingFrequencyHBox,
+                    timeRangeHBox);
 
         });
 
@@ -154,7 +175,6 @@ public class Main extends Application {
         Menu analysisMenu = menuBar.getMenus().get(1);
         MenuItem parametersMenuItem = analysisMenu.getItems().get(0);
         parametersMenuItem.setOnAction(event -> {
-            TextField textFieldFromTime = (TextField) timeRangeHBox.getChildren().get(1);
             ParametersScene.show(start, SDNN, heartRate, averageTO, averageTS, DC, AC, intervalsRR, samplingFrequency);
             HeartRateVariabilityScene.show(intervalsRR);
         });
@@ -163,15 +183,24 @@ public class Main extends Application {
         Button btnLoadSignal = (Button) timeRangeHBox.getChildren().get(4);
         btnLoadSignal.setOnAction(event -> {
 
+            TextField textFieldFromTime = (TextField) timeRangeHBox.getChildren().get(1);
+            TextField textFieldToTime = (TextField) timeRangeHBox.getChildren().get(3);
+
+            timeRangeHBox.getChildren().remove(timeRangeHBox.lookup("#error-label"));
+
+            //TODO Walidacja zakresu czasu
+            if (!(Validator.isLocalTime(textFieldFromTime.getText()) && Validator.isLocalTime(textFieldToTime.getText()))) {
+                timeRangeHBox.getChildren().add(errorMessageLabel("Invalid time format [HH:MM:SS]."));
+                return;
+            }
+
             if (timeRangeHBox.getChildren().size() == 6) {
                 timeRangeHBox.getChildren().remove(5);
             }
 
-            TextField textFieldFromTime = (TextField) timeRangeHBox.getChildren().get(1);
-            TextField textFieldToTime = (TextField) timeRangeHBox.getChildren().get(3);
-
             int fromTime = Math.localTimeToSeconds(textFieldFromTime.getText());
             int toTime = Math.localTimeToSeconds(textFieldToTime.getText());
+
             start = Math.secondsToSample(fromTime, samplingFrequency);
             stop = Math.secondsToSample(toTime, samplingFrequency);
 
@@ -218,6 +247,7 @@ public class Main extends Application {
             Button btnPrevious = (Button) selectTimeHBox.getChildren().get(0);
             btnPrevious.setDisable(true);
 
+            /**Previous button**/
             btnPrevious.setOnAction(event2 -> {
                 counter--;
                 updateBtnPrevious(btnPrevious, counter);
@@ -292,6 +322,10 @@ public class Main extends Application {
                 vbox.getChildren().set(10, lineCharts.get(3));
             }
 
+            if (intervalsRR.size() > 0) {
+                menuAnalysis.setDisable(false);
+            }
+
         });
 
         Scene scene = new Scene(vbox, 800, 600);
@@ -303,21 +337,22 @@ public class Main extends Application {
 
     }
 
-    public static void updateLineCharts(List<LineChart<Number, Number>> lineCharts, VBox vbox) {
+    private static void updateLineCharts(List<LineChart<Number, Number>> lineCharts, VBox vbox) {
         vbox.getChildren().set(7, lineCharts.get(0));
         vbox.getChildren().set(8, lineCharts.get(1));
         vbox.getChildren().set(9, lineCharts.get(2));
         vbox.getChildren().set(10, lineCharts.get(3));
     }
 
-    public Label errorMessageLabel(String text) {
+    private Label errorMessageLabel(String text) {
         Label label = new Label();
-        label.setText("Invalid format data [HH:MM:SS].");
+        label.setId("error-label");
+        label.setText(text);
         label.setTextFill(Color.RED);
         return label;
     }
 
-    public static void updateBtnPrevious(Button btnPrevious, int counter) {
+    private static void updateBtnPrevious(Button btnPrevious, int counter) {
         if (counter > 0) {
             btnPrevious.setDisable(false);
         } else {
@@ -325,6 +360,13 @@ public class Main extends Application {
         }
     }
 
+    private Alert getErrorAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Invalid file extension!");
+        alert.setContentText("You can use only file with .dat or .csv extension.");
+        return alert;
+    }
 
     public static void main(String[] args) {
         launch(args);

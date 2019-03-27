@@ -1,4 +1,4 @@
-package filter_pan_tompkins;
+package filters.pantompkins;
 
 public class BandPassFilter {
 
