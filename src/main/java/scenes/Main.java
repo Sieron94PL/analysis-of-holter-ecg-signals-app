@@ -17,7 +17,6 @@ import qrs.*;
 import utils.*;
 import utils.Math;
 
-import javax.xml.soap.Text;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -103,16 +102,14 @@ public class Main extends Application {
             vbox.getChildren().clear();
             vbox.getChildren().add(menuBar);
             menuAnalysis.setDisable(true);
+            samplingFrequencyHBox.getChildren().set(2, new CheckBox());
             samplingFrequencyHBox.setDisable(false);
             samplingFrequencyHBox.getChildren().filtered(node -> node instanceof TextField).forEach(node -> ((TextField) node).setText(""));
             timeRangeHBox.getChildren().filtered(node -> node instanceof TextField).forEach(node -> ((TextField) node).setText(""));
 
-            //TODO Odznaczanie checkbox'a bez wyzwalania event'u
-
             fileDirectory = FileHelper.getPath();
             fileExtension = FileHelper.getFileExtension(fileDirectory);
 
-            //TODO Walidacja zawartości plików dat/csv
             if (!(fileExtension.equals(".dat") || fileExtension.equals(".csv"))) {
                 getErrorAlert().showAndWait();
                 return;
@@ -133,6 +130,7 @@ public class Main extends Application {
                 if (i == 1)
                     rb.setSelected(true);
             }
+
 
             CheckBox checkBox = (CheckBox) samplingFrequencyHBox.getChildren().get(2);
             checkBox.setDisable(false);
@@ -188,9 +186,13 @@ public class Main extends Application {
 
             timeRangeHBox.getChildren().remove(timeRangeHBox.lookup("#error-label"));
 
-            //TODO Walidacja zakresu czasu
             if (!(Validator.isLocalTime(textFieldFromTime.getText()) && Validator.isLocalTime(textFieldToTime.getText()))) {
                 timeRangeHBox.getChildren().add(errorMessageLabel("Invalid time format [HH:MM:SS]."));
+                return;
+            }
+
+            if (!Validator.isValidTimeRange(textFieldFromTime.getText(), textFieldToTime.getText())) {
+                timeRangeHBox.getChildren().add(errorMessageLabel("Invalid time range."));
                 return;
             }
 

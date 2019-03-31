@@ -19,4 +19,10 @@ public class Validator {
             return false;
         }
     }
+
+    public static boolean isValidTimeRange(String fromTime, String toTime) {
+        float fromTimeInSeconds = Math.localTimeToSeconds(fromTime);
+        float toTimeInSeconds = Math.localTimeToSeconds(toTime);
+        return (toTimeInSeconds - fromTimeInSeconds) > 0;
+    }
 }

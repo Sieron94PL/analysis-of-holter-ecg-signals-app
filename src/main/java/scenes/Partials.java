@@ -132,12 +132,10 @@ public class Partials {
 
         TextField samplingFrequencyTextField = new TextField();
 
-        CheckBox checkBox = new CheckBox();
-
         HBox hbox = new HBox();
         hbox.setStyle("-fx-padding: 5 0 0 0; -fx-font-size: 10px; -fx-font-style: italic;");
         hbox.setSpacing(15);
-        hbox.getChildren().addAll(samplingFrequencyLabel, samplingFrequencyTextField, checkBox);
+        hbox.getChildren().addAll(samplingFrequencyLabel, samplingFrequencyTextField);
         return hbox;
     }
 
