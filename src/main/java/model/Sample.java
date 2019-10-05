@@ -1,7 +1,15 @@
 package model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class Sample {
 
     private int id;
@@ -10,16 +18,6 @@ public class Sample {
     private float TO;
     private float TS;
     private float HR;
-
-    public float getHR() {
-        return HR;
-    }
-
-    public void setHR(float HR) {
-        this.HR = HR;
-    }
-
-    public Sample() {}
 
     public Sample(int id, float value) {
         this.id = id;
@@ -34,37 +32,4 @@ public class Sample {
         }
         return null;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public float getValue() {
-        return value;
-    }
-
-    public void setPVC(boolean PVC) {
-        isPVC = PVC;
-    }
-
-    public boolean isPVC() {
-        return isPVC;
-    }
-
-    public float getTO() {
-        return TO;
-    }
-
-    public void setTO(float TO) {
-        this.TO = TO;
-    }
-
-    public float getTS() {
-        return TS;
-    }
-
-    public void setTS(float TS) {
-        this.TS = TS;
-    }
-
 }

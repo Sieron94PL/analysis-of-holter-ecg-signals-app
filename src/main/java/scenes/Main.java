@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.HeartRateVariabilityData;
 import model.Sample;
 import parameters.*;
 import qrs.*;
@@ -131,7 +132,6 @@ public class Main extends Application {
                     rb.setSelected(true);
             }
 
-
             CheckBox checkBox = (CheckBox) samplingFrequencyHBox.getChildren().get(2);
             checkBox.setDisable(false);
             checkBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -144,16 +144,17 @@ public class Main extends Application {
                         }
                         samplingFrequencyHBox.getChildren().add(errorMessageLabel("Sampling frequency must be a number."));
                         checkBox.setSelected(false);
-                    } else {
-                        checkBox.setDisable(true);
-                        checkBox.setSelected(true);
-                        samplingFrequencyHBox.setDisable(true);
-                        channelNumberRadioButtonHBox.setDisable(true);
-                        fileDirectoryLabel.setDisable(true);
-                        timeRangeHBox.setDisable(false);
-                        samplingFrequency = Float.parseFloat(samplingFrequencyTextField.getText());
-                        Partials.updateFileDirectoryLabel(fileDirectory, fileDirectoryLabel, samplingFrequency, channels);
+                        return;
                     }
+                    checkBox.setDisable(true);
+                    checkBox.setSelected(true);
+                    samplingFrequencyHBox.setDisable(true);
+                    channelNumberRadioButtonHBox.setDisable(true);
+                    fileDirectoryLabel.setDisable(true);
+                    timeRangeHBox.setDisable(false);
+                    samplingFrequency = Float.parseFloat(samplingFrequencyTextField.getText());
+                    Partials.updateFileDirectoryLabel(fileDirectory, fileDirectoryLabel, samplingFrequency, channels);
+
 
                 }
             });
@@ -355,11 +356,7 @@ public class Main extends Application {
     }
 
     private static void updateBtnPrevious(Button btnPrevious, int counter) {
-        if (counter > 0) {
-            btnPrevious.setDisable(false);
-        } else {
-            btnPrevious.setDisable(true);
-        }
+        btnPrevious.setDisable(counter != 0);
     }
 
     private Alert getErrorAlert() {

@@ -63,12 +63,9 @@ public class ReadCardioPathSimple {
 
 
     public static List<String[]> getRecords(String path) {
-        Reader reader;
         try {
-            reader = Files.newBufferedReader(Paths.get(path));
-            CSVReader csvReader = new CSVReader(reader);
-            List<String[]> records = csvReader.readAll();
-            return records;
+            Reader reader = Files.newBufferedReader(Paths.get(path));
+            return new CSVReader(reader).readAll();
         } catch (IOException e) {
             e.printStackTrace();
         }

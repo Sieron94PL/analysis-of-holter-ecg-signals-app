@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Handling errors in main application view.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Validation time range, unselecting checkbox.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis-of-holter-ecg-signals-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis-of-holter-ecg-signals-app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/HeartRateVariabilityData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HeartRateVariabilityData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/IntervalRRData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IntervalRRData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Sample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/researchaspect/PeakDetectionHolterEcg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/researchaspect/PeakDetectionHolterEcg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scenes/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/ParametersScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/ParametersScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scenes/Partials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Partials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ReadCardioPathSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ReadCardioPathSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/HeartRateTurbulenceData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/HeartRateVariabilityData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Sample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/parameters/HeartRate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/parameters/HeartRateTurbulence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/parameters/HeartRateVariability.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/parameters/PrematureVentricularContractions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/qrs/Derivative.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/qrs/Integration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/qrs/Normalization.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/qrs/QrsDetection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/qrs/Squaring.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/ECGSignal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/Math.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/ReadCardioPathNumberOfChannels.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/ReadCardioPathSimple.class" beforeDir="false" />
     </list>
-    <ignored path="JavaFxApplication.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path=".idea/" />
+    <ignored path="target/" />
+    <ignored path="analysis-of-holter-ecg-signals-app.iml" />
+    <manually-removed-from-ignored>
+      <directory path="$PROJECT_DIR$/out/" />
+      <directory path="$PROJECT_DIR$/target/" />
+    </manually-removed-from-ignored>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +99,7 @@
     <session id="886477547">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="114" />
+          <entry key="project.closed" value="128" />
           <entry key="project.open.time.103" value="1" />
           <entry key="project.open.time.109" value="1" />
           <entry key="project.open.time.128" value="1" />
@@ -83,11 +109,11 @@
           <entry key="project.open.time.165" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.184" value="1" />
-          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.23" value="2" />
-          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.24" value="2" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.33" value="1" />
@@ -113,58 +139,61 @@
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.60" value="2" />
           <entry key="project.open.time.61" value="4" />
-          <entry key="project.open.time.62" value="1" />
+          <entry key="project.open.time.62" value="2" />
           <entry key="project.open.time.63" value="1" />
-          <entry key="project.open.time.64" value="1" />
+          <entry key="project.open.time.64" value="2" />
           <entry key="project.open.time.65" value="2" />
-          <entry key="project.open.time.66" value="6" />
+          <entry key="project.open.time.66" value="7" />
           <entry key="project.open.time.67" value="4" />
-          <entry key="project.open.time.68" value="4" />
+          <entry key="project.open.time.68" value="5" />
           <entry key="project.open.time.69" value="2" />
           <entry key="project.open.time.70" value="3" />
           <entry key="project.open.time.71" value="4" />
           <entry key="project.open.time.72" value="3" />
           <entry key="project.open.time.73" value="6" />
           <entry key="project.open.time.74" value="1" />
-          <entry key="project.open.time.75" value="1" />
-          <entry key="project.open.time.76" value="2" />
-          <entry key="project.open.time.77" value="2" />
-          <entry key="project.open.time.78" value="4" />
+          <entry key="project.open.time.75" value="2" />
+          <entry key="project.open.time.76" value="3" />
+          <entry key="project.open.time.77" value="4" />
+          <entry key="project.open.time.78" value="5" />
           <entry key="project.open.time.79" value="1" />
           <entry key="project.open.time.80" value="1" />
+          <entry key="project.open.time.81" value="1" />
           <entry key="project.open.time.82" value="1" />
           <entry key="project.open.time.83" value="4" />
           <entry key="project.open.time.84" value="2" />
           <entry key="project.open.time.85" value="2" />
-          <entry key="project.open.time.86" value="3" />
+          <entry key="project.open.time.86" value="4" />
           <entry key="project.open.time.88" value="1" />
           <entry key="project.open.time.89" value="1" />
+          <entry key="project.open.time.90" value="1" />
+          <entry key="project.open.time.93" value="1" />
           <entry key="project.open.time.94" value="1" />
           <entry key="project.open.time.99" value="1" />
-          <entry key="project.opened" value="124" />
+          <entry key="project.opened" value="139" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="6" />
-          <entry key="css" value="12" />
+          <entry key="css" value="14" />
           <entry key="fxml" value="4" />
-          <entry key="iml" value="1" />
-          <entry key="java" value="755" />
+          <entry key="iml" value="2" />
+          <entry key="java" value="888" />
           <entry key="png" value="1" />
           <entry key="txt" value="1" />
-          <entry key="xml" value="4" />
+          <entry key="xml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="6" />
-          <entry key="CSS" value="12" />
-          <entry key="IDEA_MODULE" value="1" />
+          <entry key="CSS" value="14" />
+          <entry key="IDEA_MODULE" value="2" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="755" />
+          <entry key="JAVA" value="888" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="XML" value="8" />
+          <entry key="XML" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -173,18 +202,18 @@
           <entry key="css" value="255" />
           <entry key="dummy" value="126" />
           <entry key="fxml" value="366" />
-          <entry key="java" value="66950" />
-          <entry key="txt" value="967" />
-          <entry key="xml" value="3" />
+          <entry key="java" value="67385" />
+          <entry key="txt" value="1038" />
+          <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="2" />
           <entry key="CSS" value="255" />
-          <entry key="JAVA" value="66950" />
-          <entry key="PLAIN_TEXT" value="1093" />
-          <entry key="XML" value="369" />
+          <entry key="JAVA" value="67385" />
+          <entry key="PLAIN_TEXT" value="1164" />
+          <entry key="XML" value="371" />
         </counts>
       </usages-collector>
     </session>
@@ -195,46 +224,43 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/scenes/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-510">
-              <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Validator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/scenes/Partials.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1904">
-              <caret line="137" column="85" selection-start-line="137" selection-start-column="85" selection-end-line="137" selection-end-column="85" />
+            <state relative-caret-position="-2">
+              <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/scenes/MainScene.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Squaring.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1701">
-              <caret line="115" column="50" selection-start-line="115" selection-start-column="50" selection-end-line="115" selection-end-column="50" />
+            <state relative-caret-position="85">
+              <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Derivative.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/QrsDetection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="816">
+              <caret line="56" column="64" selection-start-line="56" selection-start-column="64" selection-end-line="56" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Normalization.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -249,37 +275,50 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Normalization.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/QrsDetection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-242">
-              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/DataHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1921">
-              <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Squaring.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Derivative.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis-of-holter-ecg-signals-app.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Sample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/main-scene.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/scenes/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="352" column="28" selection-start-line="352" selection-start-column="28" selection-end-line="352" selection-end-column="28" />
+              <folding>
+                <element signature="e#16348#16349#0" expanded="true" />
+                <element signature="e#16400#16401#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -291,8 +330,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -322,6 +361,8 @@
       <find>errorMessageLabel</find>
       <find>vbox</find>
       <find>On</find>
+      <find>heartRateVariabilityTableView</find>
+      <find>crecgFile</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Damian\IdeaProjects\analysis-of-holter-ecg-signals-app\src\main</dir>
@@ -338,10 +379,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/model/HeartRateTurbulenceData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/HeartRateTurbulenceModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/parameters/DecelerationAceleration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/MinuteInputSignal.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/ParametersScene.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/DecelerationAcceleration.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Main.java" />
@@ -350,27 +387,20 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/FileHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/HighPassFilter.java" />
         <option value="$PROJECT_DIR$/src/main/resources/chart.css" />
-        <option value="$PROJECT_DIR$/src/main/java/model/IntervalRRData.java" />
         <option value="$PROJECT_DIR$/src/main/resources/chart1.css" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/HeartRateTurbulence.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ResearchAspect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Sample.java" />
         <option value="$PROJECT_DIR$/src/main/java/scenes/ResearchAspect.java" />
         <option value="$PROJECT_DIR$/src/main/java/research_aspect/DataHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/parameters/HeartRate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/scenes/ParametersScene.java" />
         <option value="$PROJECT_DIR$/src/main/java/research_aspect/ResearchAspect.java" />
         <option value="$PROJECT_DIR$/src/main/java/qrs/Derivative.java" />
         <option value="$PROJECT_DIR$/src/main/java/qrs/Integration.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/PrematureVentricularContractions.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/HeartRateVariability.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/Deceleration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/parameters/Acceleration.java" />
         <option value="$PROJECT_DIR$/src/main/java/filter_pan_tompkins/BandPassFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/filter_discrete_realization/LowPassFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/filter_discrete_realization/HighPassFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/ReadCardioPathSimple.java" />
         <option value="$PROJECT_DIR$/src/main/java/qrs/Normalization.java" />
         <option value="$PROJECT_DIR$/src/main/java/research_aspect/ResearchAspectHolterEcg.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/Math.java" />
@@ -386,9 +416,20 @@
         <option value="$PROJECT_DIR$/src/main/java/filters/pantompkins/LowPassFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/parameters/abstraction/Acceleration.java" />
         <option value="$PROJECT_DIR$/src/main/java/scenes/MainScene.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/Validator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/scenes/Partials.java" />
+        <option value="$PROJECT_DIR$/src/main/java/parameters/HeartRate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/HeartRateTurbulenceData.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/model/HeartRateVariabilityData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Sample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/scenes/ParametersScene.java" />
+        <option value="$PROJECT_DIR$/src/main/java/parameters/Acceleration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/IntervalRRData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/ReadCardioPathSimple.java" />
         <option value="$PROJECT_DIR$/src/main/java/scenes/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/qrs/Squaring.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Validator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/researchaspect/PeakDetectionHolterEcg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/scenes/Partials.java" />
       </list>
     </option>
   </component>
@@ -418,10 +459,27 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1503" />
-    <option name="y" value="-89" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="height" value="754" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Java</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Class structureJava</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -432,9 +490,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -459,6 +514,57 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="filters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="filters" type="462c0819:PsiDirectoryNode" />
+              <item name="discreterealization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="filters" type="462c0819:PsiDirectoryNode" />
+              <item name="iirj" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="filters" type="462c0819:PsiDirectoryNode" />
+              <item name="pantompkins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="parameters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
@@ -492,10 +598,30 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analysis-of-holter-ecg-signals-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analysis-of-holter-ecg-signals-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -508,15 +634,15 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554050415202" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570290403878" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/analysis-of-holter-ecg-signals-app.iml" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -902,7 +1028,22 @@
       <workItem from="1553098597923" duration="3371000" />
       <workItem from="1553425726341" duration="1946000" />
       <workItem from="1553708358649" duration="10076000" />
-      <workItem from="1554023602332" duration="2967000" />
+      <workItem from="1554023602332" duration="3733000" />
+      <workItem from="1563200134212" duration="599000" />
+      <workItem from="1564816613582" duration="2700000" />
+      <workItem from="1565206408673" duration="1668000" />
+      <workItem from="1565417125026" duration="602000" />
+      <workItem from="1565421444335" duration="903000" />
+      <workItem from="1565422402365" duration="4412000" />
+      <workItem from="1565465143155" duration="51000" />
+      <workItem from="1565803669389" duration="4042000" />
+      <workItem from="1566674859961" duration="189000" />
+      <workItem from="1567527861757" duration="3580000" />
+      <workItem from="1568472070936" duration="586000" />
+      <workItem from="1568566136795" duration="1516000" />
+      <workItem from="1568912726559" duration="3058000" />
+      <workItem from="1569610174336" duration="2133000" />
+      <workItem from="1570289144704" duration="1228000" />
     </task>
     <task id="LOCAL-00001" summary="java.qrs:&#10;Derivative.class: [add] Argument samplingFrequency in derivative method.&#10;Normalization.class: [add] Method normalize for 1.5 sec. window size.&#10;QrsDetection.class: [modify] Searching peak in 20 samples range.">
       <created>1549118014349</created>
@@ -953,11 +1094,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553717986279</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Validation time range, unselecting checkbox.">
+      <created>1554050554359</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1554050554359</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="929116000" />
+    <option name="totallyTimeSpent" value="957149000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -969,9 +1117,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-326" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19989339" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1860817" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -991,7 +1139,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" weight="0.32832617" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.31866953" />
       <window_info anchor="bottom" id="Problems" order="12" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="13" visible="true" weight="0.21995708" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="13" visible="true" weight="0.2673108" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1007,7 +1155,7 @@
       <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.38880485" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19989339" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.14674735" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1016,7 +1164,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32580644" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29613733" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29613733" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40450644" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1027,7 +1175,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" weight="0.32832617" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.31866953" />
       <window_info anchor="bottom" id="Problems" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.21995708" />
+      <window_info anchor="bottom" id="Version Control" order="13" visible="true" weight="0.3564516" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1095,100 +1243,15 @@
     <MESSAGE value="Modify research aspect." />
     <MESSAGE value="Research aspect: Peak detection Holter ECG. Modify QRS detection algorithm." />
     <MESSAGE value="Handling errors in main application view." />
-    <option name="LAST_COMMIT_MESSAGE" value="Handling errors in main application view." />
+    <MESSAGE value="Validation time range, unselecting checkbox." />
+    <option name="LAST_COMMIT_MESSAGE" value="Validation time range, unselecting checkbox." />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/application/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="304" column="25" selection-start-line="304" selection-start-column="25" selection-end-line="304" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/uk/me/berndporr/iirj/1.1/iirj-1.1.jar!/uk/me/berndporr/iirj/Cascade.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="3698" selection-start-line="3698" selection-end-line="3698" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/filter_pan_tompkins/BandPassFilter.class" />
-    <entry file="file://$PROJECT_DIR$/target/classes/filter_discrete_realization/HighPassFilter.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/HeartRateTurbulenceData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/HeartRateVariabilityData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/IntervalRRData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Sample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Deceleration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/PrematureVentricularContractions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="98" selection-start-line="19" selection-start-column="98" selection-end-line="19" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRateTurbulence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/filter_discrete_realization/BandPassFilter.class" />
-    <entry file="file://$PROJECT_DIR$/target/classes/scenes/Controller.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/scenes/Controller.class" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/AbstractList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
@@ -1196,10 +1259,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRateVariability.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/abstraction/Acceleration.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="574">
+          <caret line="471" column="18" selection-start-line="471" selection-start-column="18" selection-end-line="471" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/collections/ObservableList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="100" column="27" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/dictionaries/Damian.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/ECGSignal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/scene/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="7034" column="22" selection-start-line="7034" selection-start-column="22" selection-end-line="7034" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/HeartRateVariabilityScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1219,44 +1314,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/filters/discreterealization/BandPassFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filters/iirj/ButterworthFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filters/pantompkins/BandPassFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/filters/pantompkins/LowPassFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filters/pantompkins/HighPassFilter.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
+        <state relative-caret-position="491">
+          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filters/pantompkins/LowPassFilter.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/scene/control/Dialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/abstraction/Acceleration.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Acceleration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="8908">
+          <caret line="594" column="22" selection-start-line="594" selection-start-column="22" selection-end-line="594" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1267,24 +1347,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/HeartRateVariabilityScene.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/filters/iirj/ButterworthFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
+        <state relative-caret-position="425">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filters/pantompkins/BandPassFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/filters/pantompkins/HighPassFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Acceleration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="40" column="56" lean-forward="true" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FileHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/HeartRateTurbulenceData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/scenes/ParametersScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="131" column="24" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
+        <state relative-caret-position="1496">
+          <caret line="107" column="18" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Math.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/Deceleration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRateVariability.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1295,10 +1417,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/IntervalRRData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/PrematureVentricularContractions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="98" selection-start-line="19" selection-start-column="98" selection-end-line="19" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/HeartRateVariabilityData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/HeartRate.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRateTurbulence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/parameters/HeartRate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/ResearchAspectMITDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/ReadCardioPathSimple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="697">
+          <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Validator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/DataHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="128" column="40" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/PeakDetectionHolterEcg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/ResearchAspectHolterEcg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/MainScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="236" column="29" selection-start-line="236" selection-start-column="29" selection-end-line="236" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1316,59 +1526,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FileHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="315">
+          <caret line="352" column="28" selection-start-line="352" selection-start-column="28" selection-end-line="352" selection-end-column="28" />
+          <folding>
+            <element signature="e#16348#16349#0" expanded="true" />
+            <element signature="e#16400#16401#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/File.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Squaring.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="471" column="18" selection-start-line="471" selection-start-column="18" selection-end-line="471" selection-end-column="18" />
+        <state relative-caret-position="85">
+          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/collections/ObservableList.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/QrsDetection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="100" column="27" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="27" />
+        <state relative-caret-position="816">
+          <caret line="56" column="64" selection-start-line="56" selection-start-column="64" selection-end-line="56" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/ECGSignal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Normalization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/ResearchAspectMITDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="161" column="30" lean-forward="true" selection-start-line="161" selection-start-column="30" selection-end-line="161" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/ResearchAspectHolterEcg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="50" column="59" selection-start-line="47" selection-end-line="53" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/PeakDetectionHolterEcg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="67" column="1" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Derivative.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="238">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1379,59 +1568,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Normalization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Squaring.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/Derivative.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/qrs/QrsDetection.java">
+    <entry file="file://$PROJECT_DIR$/analysis-of-holter-ecg-signals-app.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
-          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+        <state relative-caret-position="140">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/researchaspect/DataHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Sample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Validator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/MainScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1701">
-          <caret line="115" column="50" selection-start-line="115" selection-start-column="50" selection-end-line="115" selection-end-column="50" />
+        <state relative-caret-position="393">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/scenes/Partials.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="137" column="85" selection-start-line="137" selection-start-column="85" selection-end-line="137" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/scenes/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+        <state relative-caret-position="-2">
+          <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

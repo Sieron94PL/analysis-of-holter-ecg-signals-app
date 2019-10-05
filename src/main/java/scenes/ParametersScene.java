@@ -105,7 +105,7 @@ public class ParametersScene {
     }
 
 
-    public static TableView heartRateVariabilityTableView(int start, List<Sample> intervalsRR, float samplingFrequency) {
+    private static TableView heartRateVariabilityTableView(int start, List<Sample> intervalsRR, float samplingFrequency) {
         TableView<HeartRateVariabilityData> heartRateVariabilityTableView = new TableView();
         heartRateVariabilityTableView.setPrefWidth(450);
 

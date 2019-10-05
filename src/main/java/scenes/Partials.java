@@ -98,10 +98,11 @@ public class Partials {
 
     public static void updateFileDirectoryLabel(String path, Label fileDirectoryLabel, float samplingFrequency, int channels) {
         float seconds;
-        if (FileHelper.getFileExtension(path).equals(".csv"))
+        if (FileHelper.getFileExtension(path).equals(".csv")) {
             seconds = Math.sampleToSecond(ReadCardioPathSimple.getRecords(path).size(), samplingFrequency);
-        else
+        } else {
             seconds = Math.sampleToSecond(ReadCardioPathSimple.load(path, channels, (int) samplingFrequency).getChannelLength(0), samplingFrequency);
+        }
         fileDirectoryLabel.setText(path + " (duration: " + LocalTime.MIN.plusSeconds((int) seconds).toString() + ")");
     }
 
